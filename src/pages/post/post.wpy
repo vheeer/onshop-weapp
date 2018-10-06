@@ -1,0 +1,340 @@
+<style lang="less">
+.wrap {
+  .clear {
+    clear: both;
+  }
+  background-color: #f8f8f8;
+  image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .header {
+    .bannar {
+      height: 385rpx;
+      navigator {
+        display: block;
+        height: 100%;
+        image {
+
+        } 
+      }
+    }
+  }
+  .shops {
+    padding: 10rpx;
+    .shop {
+      position: relative;
+      padding: 10rpx 10rpx 22rpx 10rpx;
+      margin: 0 0 25rpx 0;
+      background-color: white;
+      >.header {
+        
+      }
+      >.body {
+        padding: 0 0 20rpx 0;
+        font-size: 27rpx;
+        .author {
+          .avatar {
+            float: left;
+            padding: 10rpx;
+            width: 100rpx;
+            height: 100rpx;
+            border-radius: 200rpx;
+            overflow: hidden;
+            image {
+
+            }
+          }
+        }
+        .name {
+          padding: 0 0 5rpx 0;
+        }
+      }
+      .right {
+        float: left;
+        padding: 0 0 0 33rpx;
+        .title {
+
+        }
+        .tags {
+          .tag {
+
+          }
+        }
+      }
+      >.post_box {
+        >.post {
+
+        }
+      }
+      >.name {
+        padding: 10rpx 10rpx;
+      }
+      .star {
+        padding: 0 10rpx;
+      }
+      .desc {
+        padding: 0 10rpx;
+      }
+      >.bottom {
+        padding: 0 11rpx;
+        background-color: white;
+        >.time {
+          color: #666;
+          font-size: 17rpx;
+        }
+        >.address {
+          padding: 8rpx 0 0 0;
+          font-size: 26rpx;
+          image {
+            float: left;
+            width: 40rpx;
+            height: 30rpx;
+          }
+          text {
+            display: block;
+            color: #4395FF;
+            padding: 8rpx;
+          }
+        }
+        >.others {
+          position: relative;
+          padding: 10rpx 0 0 10rpx;
+          background-color: #f8f8f8;
+          >.browse {
+            >view {
+              display: block;
+              float: left;
+              font-size: 25rpx;
+            }
+            position: relative;
+            font-size: 20rpx;
+            image {
+              width: 40rpx;
+              float: left;
+            }
+            >.num {
+              color: #4395FF;
+            }
+          }
+          >.up {
+            >view {
+              display: block;
+              font-size: 25rpx;
+              float: left;
+            }
+            position: relative;
+            font-size: 20rpx;
+            image {
+              position: relative;
+              top: -10rpx;
+              width: 45rpx;
+              float: left;
+            }
+            >.num {
+              color: #4395FF;
+            }
+          }
+          >.in {
+            position: absolute;
+            right: 50rpx;
+            top: 10rpx;
+            font-size: 23rpx;
+            navigator {
+              color: #4395FF;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</style>
+<template>
+  <view class='wrap'>
+    <!-- 头部开始 -->
+    <view class="header">
+      <!-- 轮播开始 -->
+      <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+        <swiper-item wx:for="{{bannar}}" wx:key="{{item.id}}">
+          <navigator url="{{item.link}}">
+            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"></image>
+          </navigator>
+        </swiper-item>
+      </swiper>
+      <!-- 轮播结束 -->
+    </view>
+    <!-- 头部结束 -->
+    <!-- 主体开始 -->
+    <view class="body">
+      <view class="title">
+        <image mode="widthFix" bindtap="goNotice" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/%E9%A1%B9%E7%9B%AE%E5%9B%9B/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%95%86%E5%B8%AE%E5%A4%B4%E6%9D%A1.jpg" />
+      </view>
+      <view class="shops">
+        <block wx:for="{{posts}}" wx:key="post" wx:for-item="post">
+          <view class="shop">
+            <view class="header">
+              
+            </view>
+            <view class="body">
+              <view class="author">
+                <view class="clear"></view>
+                <!-- 头像 -->
+                <view class="avatar">
+                  <image src="{{post.user.avatar}}" />
+                </view>
+                <view class="right">
+                  <view class="title">{{post.user.nickname}}</view>
+                  <view class="tags">
+                    <wxc-label wx:if="{{post.is_top}}" class="label" type="fill">置顶</wxc-label>
+                  </view>
+                </view>
+                <view class="clear"></view>
+              </view>
+              <!-- 店名 -->
+              <view class="name">{{post.title}}</view>
+              <!-- 主图 -->
+              <view class="post_box">
+                <image mode="widthFix" src="{{post.primary_img_url}}"></image>
+              </view>
+              <!-- 星级 -->
+              <view class="star">
+                好评指数：
+                <wxc-rate value="{{post.rating}}" readonly="{{true}}" count="5"></wxc-rate>
+              </view>
+              <!-- 描述 -->
+              <!-- <view class="desc">推荐理由：<text>{{post.introduce}}</text></view> -->
+            </view>
+            <view class="bottom">
+              <view class="time">
+                <text>{{post.add_time}}</text>发布
+              </view>
+              <view class="address">
+                <image mode="widthFix" src="/static/image/target.png" />
+                <text>{{post.position_description}}</text>
+              </view>
+              <view class="others">
+                <!-- 浏览 -->
+                <view class="browse">
+                  <image mode="widthFix" src="/static/image/watch.png" />
+                  <view class="num">{{post.view}}</view>
+                  <view class="">人浏览</view>
+                </view>
+                <!-- 点赞 -->
+                <view data-id="{{post.id}}" class="up" bindtap="up">
+                  <image mode="widthFix" src="/static/image/up.png" />
+                  <view class="num">{{post.up}}</view>
+                  <view class="">人点赞</view>
+                </view>
+                <!-- 查看详情 -->
+                <view class="in">
+                  <navigator url="./desc?post_id={{post.id}}">
+                    查看详情>>
+                  </navigator>
+                </view>
+                <view class="clear"></view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- 主体结束 -->
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import { request } from '../../utils/util'
+  import api from '../../config/api'
+  export default class Index extends wepy.page {
+    config = {
+      usingComponents: {
+        'wxc-rate': '../../packages/@minui/wxc-rate/dist/index',
+        'wxc-label': '../../packages/@minui/wxc-label/dist/index',
+      }
+    }
+    components = {}
+
+    mixins = []
+
+    data = {
+      bannar: [
+        {
+          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit.jpg',
+          link: ''
+        },
+        {
+          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit1.jpg',
+          link: ''
+        }
+      ],
+      posts: [],
+      page: 1
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {
+      'bindtap': (...args) => {
+
+      }
+    }
+
+    onLoad() {
+      let _this = this
+      console.log('_this', _this)
+    }
+
+    async onShow() {
+      this.page = 1
+      const posts = await this.getData(this.page)
+      this.posts = posts
+      this.$apply()
+      console.log('posts', posts)
+    }
+
+    async onReachBottom() {
+      let { page } = this
+      page++
+      const posts = await this.getData(page)
+      this.posts.push(...posts)
+      this.page = page
+      this.$apply()
+    }
+
+    async getData(page) {
+      const result = await request(api.PostList, { page }, 'GET')
+      console.log('result', result)
+      let { data } = result
+      data = data.map(item => {
+        const { add_time } = item
+        if (add_time === 0) {
+          item.add_time = ''
+        } else {
+          item.add_time = new Date(add_time * 1000).format('YY年MM月dd日 hh时mm分')
+        }
+        return item
+      })
+      return data
+    }
+
+    async up(e) {
+      const { id: post_id } = e.currentTarget.dataset
+      
+      const postData = await request(api.PostUp, { post_id }, 'GET')
+      const posts = await this.getData(this.page)
+      this.posts = posts
+      this.$apply()
+    }
+
+    goNotice() {
+      wx.navigateToP({
+        url: 'notice'
+      })
+    }
+  }
+</script>

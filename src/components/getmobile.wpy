@@ -1,0 +1,33 @@
+<style>
+</style>
+<template>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="face"></button> 
+</template>
+<script>
+  import wepy from 'wepy'
+  import userService from '../services/user'
+  export default class Getmobile extends wepy.component {
+    config = {
+      usingComponents: {}
+    }
+
+    events = {}
+
+    watch = {}
+
+    props = {
+      callback: String
+    }
+
+    methods = {
+      async getPhoneNumber(e) {
+        const { iv, encryptedData } = e.detail
+        const getmobileResult = await userService.getmobile({ iv, encryptedData })
+        // 使本组件所在的页面更新数据
+        if (getmobileResult.errno === 0) {
+          this.$root[this.callback](getmobileResult.data)
+        }
+      }
+    }
+  }
+</script>

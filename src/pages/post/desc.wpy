@@ -1,0 +1,253 @@
+<style lang="less">
+page {
+  padding: 0 0 20rpx 0;
+  background-color:#eee;
+}
+.wrap {
+  background-color:#eee;
+  .clear {
+    clear: both;
+  }
+  image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .header {
+
+  }
+  .body {
+    background-color: white;
+    .author {
+      padding: 30rpx 20rpx 30rpx 20rpx;
+      border-bottom: solid 1rpx #ddd;
+      .avatar {
+        float: left;
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 200rpx;
+        overflow: hidden;
+        image {
+
+        }
+      }
+      .right {
+        float: left;
+        padding: 0 0 0 33rpx;
+        .title {
+        }
+        .tags {
+          .tag {
+
+          }
+        }
+      }
+    }
+    .article {
+      padding: 0 20rpx;
+      .title {
+        padding: 20rpx 0 0 0; 
+        font-size: 31rpx;
+      }
+      .body {
+        padding: 20rpx 0;
+      }
+      .imgs {
+        padding: 20rpx 0;
+        width: 100%;
+        .img {
+
+        }
+      }
+    }
+    >.bottom {
+      padding: 0 20rpx;
+      >.browse {
+        >view {
+          display: block;
+          float: left;
+          font-size: 22rpx;
+        }
+        position: relative;
+        font-size: 20rpx;
+        image {
+          width: 35rpx;
+          float: left;
+        }
+        >.num {
+          color: #4395FF;
+        }
+      }
+      >.up {
+        >view {
+          display: block;
+          float: left;
+          font-size: 22rpx;
+        }
+        position: relative;
+        font-size: 20rpx;
+        image {
+          position: relative;
+          top:-4rpx;
+          width: 35rpx;
+          float: left;
+        }
+        >.num {
+          color: #4395FF;
+        }
+      }
+    }
+    >.message {
+      font-size: 38rpx;
+      .contact_me {
+        color: orange;
+        padding: 15rpx 28rpx;
+        font-size: 25rpx;
+      }
+      .input__form {
+        font-size: 25rpx;
+      }
+      input {
+        font-size: 25rpx;
+      }
+    }
+  }
+}
+
+</style>
+<template>
+  <view class='wrap'>
+    <!-- 头部开始 -->
+
+    <!-- 头部结束 -->
+    <!-- 主体开始 -->
+    <view class="body">
+      <!-- 作者信息开始 -->
+      <view class="author">
+        <view class="avatar">
+          <image src="{{user.avatar}}" />
+        </view>
+        <view class="right">
+          <view class="title">{{user.nickname}}</view>
+          <view class="tags">
+            <wxc-label wx:if="{{post.is_top}}" class="label" type="fill">置顶</wxc-label>
+          </view>
+        </view>
+        <view class="clear" />
+      </view>
+      <!-- 作者信息结束 -->
+      <!-- 文章内容开始 -->
+      <view class="article">
+        <view class="title">
+          {{post.title}}
+        </view>
+        <view class="body">
+          {{post.description?post.description:''}}
+        </view>
+        <view class="imgs">
+          <block wx:for="{{imgs}}">
+            <view class="img">
+              <image mode="widthFix" src="{{item.img_url}}" />
+            </view>
+          </block>
+        </view>
+      </view>
+      <!-- 文章内容结束 -->
+      <!-- 文章浏览开始 -->
+      <view class="bottom">
+        <!-- 浏览 -->
+        <view class="browse">
+          <image mode="widthFix" src="/static/image/watch.png" />
+          <view class="num">{{post.view}}</view>
+          <view class="">次浏览</view>
+        </view>
+        <!-- 点赞 -->
+        <view class="up" bindtap="up">
+          <image mode="widthFix" src="/static/image/up.png" />
+          <view class="num">{{ups}}</view>
+          <view class="">人点赞</view>
+        </view>
+        <view class="clear"></view>
+      </view>
+      <!-- 文章浏览结束 -->
+      <!-- 附加信息开始 -->
+      <view class="message">
+        <wxc-input disabled="{{true}}" type="add_time" title="添加时间" value="{{post.add_time}}"></wxc-input>
+        <wxc-input disabled="{{true}}" type="contacts" title="联系电话" value="{{post.mobile}}"></wxc-input>
+        <view class="contact_me">联系我时，请说是在优选客联盟上看到的信息哦~</view>
+      </view>
+      <!-- 附加信息结束 -->
+    </view>
+    <!-- 主体结束 -->
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import { request } from '../../utils/util'
+  import api from '../../config/api'
+  export default class Index extends wepy.page {
+    config = {
+      usingComponents: {
+        'wxc-label': '../../packages/@minui/wxc-label/dist/index',
+        'wxc-panel': '../../packages/@minui/wxc-panel/dist/index',
+        'wxc-input': '../../packages/@minui/wxc-input/dist/index'
+      }
+    }
+    components = {}
+
+    mixins = []
+
+    data = {
+      post: {},
+      user: {},
+      imgs: [],
+      ups: 0,
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {}
+
+    async onLoad(option) {
+      const { post_id } = option
+      this.post_id = post_id
+      
+      const postData = await request(api.PostView, { post_id }, 'GET')
+    }
+
+    onShow() {
+      this.getPost()
+    }
+
+    async up() {
+      const { post_id } = this
+      
+      const postData = await request(api.PostUp, { post_id }, 'GET')
+      await this.getPost()
+    }
+
+    async getPost() {
+      const postData = await request(api.PostDetail, { id: this.post_id }, 'GET')
+      let { data: post } = postData
+      this.post = post
+      this.post.add_time = new Date(this.post.add_time * 1000).format('MM月dd日 hh时mm分')
+
+      const userData = await request(api.UserGet, { user_id: post.user_id }, 'GET')
+      const { data: user } = userData
+      this.user = user
+
+      const imgData = await request(api.PostImgGet, { post_id: post.id }, 'GET')
+      const { data: imgs } = imgData.data
+      this.imgs = imgs
+
+      const upData = await request(api.PostUpList, { post_id: post.id }, 'GET')
+      const { data: ups } = upData.data
+      this.ups = ups.length
+
+      this.$apply()
+    }
+  }
+</script>

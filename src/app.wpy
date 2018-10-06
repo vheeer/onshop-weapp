@@ -1,0 +1,263 @@
+<style lang='less'>
+.container {
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+} 
+
+view,image,text,navigator{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+
+}
+
+view,text{
+  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  font-size: 29rpx;
+  color: #333;
+}
+
+.no_data_box {
+  position: absolute;
+    width:100%;
+    top:50%;
+    margin-top:-198px;
+}
+.no_data {
+    width: 100%;
+}
+.no_title {
+    text-align:center;
+    font-size:16px;
+}
+.face {
+  display: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.01);
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  opacity: 0;
+}
+</style>
+
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+const util = require('./utils/util.js');
+const api = require('./config/api.js');
+const user = require('./services/user.js');
+
+
+    Date.prototype.format = function(format) {
+      var date = {
+        'M+': this.getMonth() + 1,
+        'd+': this.getDate(),
+        'h+': this.getHours(),
+        'm+': this.getMinutes(),
+        's+': this.getSeconds(),
+        'q+': Math.floor((this.getMonth() + 3) / 3),
+        'S+': this.getMilliseconds()
+      };
+      if (/(y+)/i.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+      }
+      for (var k in date) {
+        if (new RegExp('(' + k + ')').test(format)) {
+          format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? date[k] : ('00' + date[k]).substr(('' + date[k]).length));
+        }
+      }
+      return format;
+    };
+
+export default class extends wepy.app {
+  config = {
+    'pages': [
+      'pages/auth/login/login',
+      'pages/post/post',
+      'pages/index/index',
+      'pages/ucenter/distribute/group/group',
+      'pages/ucenter/distribute/index/index',
+      'pages/ucenter/distribute/extension/extension',
+      'pages/ucenter/index/index',
+      'pages/ucenter/distribute/cash/cash',
+      'pages/ucenter/distribute/order/order',
+      'pages/ucenter/distribute/cash_record/cash_record',
+      'pages/ucenter/distribute/join/join',
+      'pages/catalog/catalog',
+      'pages/notes/notes',
+      'pages/newGoods/newGoods',
+      'pages/hotGoods/hotGoods',
+      'pages/ucenter/address/address',
+      'pages/ucenter/addressAdd/addressAdd',
+      'pages/ucenter/footprint/footprint',
+      'pages/ucenter/order/order',
+      'pages/ucenter/orderDetail/orderDetail',
+      'pages/ucenter/express/express',
+      'pages/ucenter/feedback/feedback',
+      'pages/ucenter/coupon/coupon',
+      'pages/ucenter/collect/collect',
+      'pages/auth/register/register',
+      'pages/auth/reset/reset',
+      'pages/pay/pay',
+      'pages/payResult/payResult',
+      'pages/topic/topic',
+      'pages/comment/comment',
+      'pages/commentPost/commentPost',
+      'pages/topicComment/topicComment',
+      'pages/brand/brand',
+      'pages/brandDetail/brandDetail',
+      'pages/tag/tag',
+      'pages/tagDetail/tagDetail',
+      'pages/search/search',
+      'pages/category/category',
+      'pages/cart/cart',
+      'pages/shopping/checkout/checkout',
+      'pages/shopping/address/address',
+      'pages/shopping/addressAdd/addressAdd',
+      'pages/goods/goods',
+      'pages/topicDetail/topicDetail',
+      'pages/post/notice',
+      'pages/post/desc',
+      'pages/edit/edit'
+    ],
+    'window': {
+      'backgroundTextStyle': 'dark',
+      'navigationBarBackgroundColor': '#E92D24',
+      'navigationBarTitleText': '优选客联盟',
+      'navigationBarTextStyle': 'black',
+      'enablePullDownRefresh': false
+    },
+    'tabBar': {
+      'backgroundColor': '#fafafa',
+      'borderStyle': 'white',
+      'selectedColor': '#b4282d',
+      'color': '#666',
+      'list': [
+      {
+        'pagePath': 'pages/post/post',
+        'iconPath': 'static/images/post_before.png',
+        'selectedIconPath': 'static/images/post_after.png',
+        'text': '信息'
+      },
+      {
+        'pagePath': 'pages/index/index',
+        'iconPath': 'static/images/shop_before.png',
+        'selectedIconPath': 'static/images/shop_after.png',
+        'text': '商城'
+      },
+      {
+        'pagePath': 'pages/edit/edit',
+        'iconPath': 'static/images/edit.png',
+        'selectedIconPath': 'static/images/edit.png',
+        'text': '信息发布'
+      },
+      {
+        'pagePath': 'pages/cart/cart',
+        'iconPath': 'static/images/cart_before.png',
+        'selectedIconPath': 'static/images/cart_after.png',
+        'text': '购物车'
+      },
+      {
+        'pagePath': 'pages/ucenter/index/index',
+        'iconPath': 'static/images/ucenter_before.png',
+        'selectedIconPath': 'static/images/ucenter_after.png',
+        'text': '我的'
+      }]
+    },
+    // 需要修改为Promise形式的wxAPI
+    'promisify': [
+      'scanCode',
+      'switchTab',
+      'navigateTo',
+      'showModal',
+      'uploadFile',
+      'chooseImage',
+      'getLocation',
+      'chooseLocation',
+      'openLocation',
+    ],
+    'networkTimeout': {
+      'request': 10000,
+      'downloadFile': 10000
+    },
+    'debug': true
+  }
+  constructor() {
+    super();
+    this.use('requestfix');
+  }
+  async onLaunch(options) {
+    console.log('App onLaunch options', options);
+
+    this.config['promisify'].forEach(item => {
+      wx[item + 'P'] = this.wxPromisify(wx[item])
+    })
+
+    const { referee: referee_2 } = options.query; // 分享好友的推荐人
+    let referee_3 = options.query.scene; // 发分享码的推荐人
+    console.log('decodeURIComponent(options.scene)', decodeURIComponent(options.scene));
+    if (referee_3 && referee_3.indexOf('vheeer') > -1) {
+      referee_3 = referee_3.split('_')[1];
+    } else {
+      referee_3 = null;
+    }
+
+    const referee_inter = referee_2 || referee_3 || 0;
+
+    console.log('referee_2', referee_2);
+    console.log('referee_3', referee_3);
+    console.log('finally referee_inter', referee_inter);
+
+    wx.setStorageSync('referee_inter', referee_inter);
+
+    // wx.clearStorage()
+
+    try {
+      const res = await user.loginByWeixin()
+      console.log('loginResult', res)
+    } catch (err) {
+      console.log('loginByWeixin err', err)
+    }
+
+  }
+
+  wxPromisify(fn) {
+    return function (obj = {}) {
+      return new Promise((resolve, reject) => {
+        obj.success = function (res) {
+          console.log('Promise success 返回参数：', res)
+          resolve(res)
+        }
+        obj.fail = function (res) {
+          console.warn('Promise fail 返回参数：', res)
+          reject(res)
+        }
+        fn(obj) // 执行函数，obj为传入函数的参数
+      })
+    }
+  }
+
+  sleep(s) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('promise resolved');
+      },
+      s * 1000);
+    });
+  }
+
+  async testAsync() {
+    const data = await this.sleep(3);
+    console.log(data);
+  }
+}
+
+</script>

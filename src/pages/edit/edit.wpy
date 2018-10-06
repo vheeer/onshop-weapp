@@ -1,0 +1,772 @@
+<style lang="less">
+.wrap {
+  .clear {
+    clear: both;
+  }
+  .red {
+    color: #E92D24;
+  }
+  .delete {
+    text-decoration: line-through;
+  }
+  .blod {
+    font-weight: bold;
+  }
+  background-color: #f8f8f8;
+  image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .header {
+    .bannar {
+      navigator {
+        display: block;
+        height: 100%;
+        image {
+
+        } 
+      }
+    }
+  }
+  .body {
+    .form {
+      >.message {
+        background-color: white;
+
+      }
+      >.pos {
+        position: relative;
+        background-color: white;
+        padding: 23rpx 0 23rpx 28rpx;
+        font-size: 30rpx;
+        >.title {
+          float: left;
+          height: 51rpx;
+          line-height: 51rpx;
+        }
+        >input {
+          float: left;
+          padding: 0;
+          min-height: 0;
+        }
+        .change {
+          position: absolute;
+          right: 10rpx;
+        }
+        .getLocationShop {
+          
+        }
+        >image {
+          position: absolute;
+          width: 50rpx;
+          right: 20rpx;
+        }
+      }
+      >.desc {
+        margin: 2rpx 0 0 0;
+        background-color: white;
+        font-size: 30rpx;
+        .title {
+          padding: 23rpx 28rpx 0 28rpx;
+
+        }
+        textarea {
+          padding: 23rpx 28rpx 0 28rpx;
+          width: auto;
+          height: 300rpx;
+          font-size: 28rpx;
+        }
+      }
+      >.primary_picture {
+        margin: 20rpx 0 0 0;
+        background-color: white;
+        width: 100%;
+        padding: 30rpx;
+        >image {
+          width: 100rpx;
+          height: 100rpx;
+        }
+        >image.primary_image {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      >.picture {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20rpx 0 0 0;
+        background-color: white;
+        width: 100%;
+        height: 300rpx;
+        padding: 30rpx;
+        >image {
+          width: 100rpx;
+          height: 100rpx;
+        }
+        >.post_images {
+          display:flex;
+          flex-wrap:wrap;
+          width: 100%;
+          >.post_image {
+            position: relative;
+            width: 100rpx;
+            height: 100rpx;
+            margin: 5rpx;
+            .close {
+              position: absolute;
+              width: 30rpx;
+              height: 30rpx;
+              right: 0rpx;
+              top: 0rpx;
+            }
+            image {
+            }
+          }
+        }
+      }
+      >.contact {
+        position: relative;
+        margin: 20rpx 0rpx;
+        background-color: white;
+        border-bottom: solid 1px #ddd;
+        .item {
+          padding: 25rpx 0 25rpx 0;
+          >.getPhoneNumber {
+            display: inline-block;
+            position: absolute;
+            right: 20rpx;
+            height: 50rpx;
+            background-color: #007bff;
+            view {
+              color: white;
+              font-size: 24rpx;
+              border-color: #007bff;
+              border: 1rpx solid transparent;
+              line-height:51rpx;
+              padding:0 20rpx;
+            }
+          }
+        }
+        .visible {
+          opacity: 1;
+          color:#777;
+        }
+        .left {
+          float: left;
+          padding: 5rpx 0 0 30rpx;
+          width: 200rpx;
+          font-size: 30rpx;
+        }
+        .right {
+          float: left;
+          font-size: 30rpx;
+        }
+      }
+      >.grade {
+        font-size: 25rpx;
+        padding: 0 0 0 20rpx;
+        .decoration {
+          padding: 5rpx 0;
+          color: #666;
+          checkbox {
+            
+          }
+          >text {
+            color: #E92D24;
+          }
+        }
+        .star {
+          padding: 5rpx 0;
+          color: #666;
+          checkbox {
+
+          }
+          >text {
+            color: #E92D24;
+          }
+        }
+      }
+      .coupon {
+        padding: 8rpx 0 0 22rpx;
+        font-size: 22rpx;
+        color: #ec4149;
+      }
+      .tip {
+        padding: 8rpx 0 0 22rpx;
+        font-size: 22rpx;
+      }
+      .target {
+        padding: 0rpx 0rpx;
+      }
+      .target .title {
+        padding: 12rpx 30rpx 12rpx 22rpx;
+        color: #888;
+        font-size: 30rpx;
+      }
+      .target .select {
+        padding: 20rpx 30rpx;
+        background-color: white;
+        color: black;
+        font-size: 28rpx;
+      }
+      .read {
+        padding: 18rpx 0 16rpx 20rpx;
+        font-size: 30rpx;
+      }
+      .read checkbox {
+        position: relative;
+        top: -3rpx;
+      }
+      .apply_box {
+        background-color: white;
+        padding: 20rpx;
+      }
+      .apply_btn {
+        background-color: rgb(236, 65, 73);
+        color: white;
+        font-size: 33rpx;
+      }
+    }
+  }
+}
+</style>
+<template>
+  <view class='wrap'>
+    <!-- 头部开始 -->
+    <view class="header">
+      <!-- 轮播开始 -->
+      <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+        <swiper-item wx:for="{{bannar}}" wx:item-key="{{item.id}}">
+          <navigator url="{{item.link}}">
+            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"></image>
+          </navigator>
+        </swiper-item>
+      </swiper>
+      <!-- 轮播结束 -->
+    </view>
+    <!-- 头部结束 -->
+    <!-- 主体开始 -->
+    <view class="body">
+      <view class="form">
+        <!-- 主要信息 -->
+        <view class="message">
+          <wxc-input data-type="title" title="标题" placeholder="请输入" bind:input="changeField" value=""></wxc-input>
+          <!-- <wxc-input data-type="introduce" title="推荐理由" placeholder="请输入" bind:input="changeField" value=""></wxc-input> -->
+        </view>
+        <!-- 位置 -->
+        <view class="pos">
+          <!-- 定位按钮 -->
+          <view class="getLocationShop change btn">
+            <wxc-button type="primary" size="small" value="自动定位" bind:click="bindLocate" />
+          </view>
+          <view class="title">位置：</view>
+          <input type="text" disabled="true" bindtap="chooseLocation" value="{{address}}" />
+          <view class="clear"></view> 
+        </view>
+        <!-- 描述 -->
+        <view class="desc">
+          <view class="title">内容描述：</view>
+          <textarea type="text" data-type="description" placeholder="请输入内容描述" bindinput="changeField" />
+        </view>
+        <!-- 主图 -->
+<!--         <view class="primary_picture">
+          <view class="title">首页图</view>
+          <image wx:if="{{!changedFields.primary_img_url || changedFields.primary_img_url === ''}}" mode="widthFix" data-type="primary" src="/static/image/add.png" bindtap="addImage" />
+          <image wx:if="{{changedFields.primary_img_url && changedFields.primary_img_url !== ''}}" class="primary_image" mode="widthFix" data-type="primary" src="{{changedFields.primary_img_url}}" bindtap="addImage" />
+        </view> -->
+        <!-- 图片 -->
+        <view class="picture">
+          <view class="title">内容图</view>
+          <view class="post_images">
+            <view class="post_image">
+              <image mode="widthFix" data-type="imgs" src="/static/image/add.png" bindtap="addImage" />
+            </view>
+            <block wx:for="{{changedFields.post_images}}" wx:for-index="index">
+              <view class="post_image">
+                <image data-index="{{index}}" mode="widthFix" class="close" src="/static/image/close.png" bindtap="close" />
+                <image src="{{item}}" />
+              </view>
+            </block>
+          </view>
+        </view>
+        <!-- 联系 -->
+        <view class="contact">
+          <wxc-input data-type="contacts" title="联系人" bind:input="changeField"></wxc-input>
+          <view class="item" bindtap="getPhoneNumber">
+            <view class="left">手机号</view>
+            <input data-type="mobile" class="right" name="mobile" value="{{changedFields.mobile}}" bindinput="changeField" placeholder="请填写手机号码"></input>
+            <view class="right getPhoneNumber visible">
+              <v-getmobile wx:if="{{1}}" callback="setMobile"></v-getmobile>
+              <view>自动获取</view>
+              <!-- <text wx:else>{{userInfo.mobile}}</text> -->
+            </view>
+            <!-- <button wx:if="{{!userInfo.mobile}}" open-type="getPhoneNumber" class="getPhoneNumber right" bindgetphonenumber="getPhoneNumber"></button> -->
+            <view class="clear"></view>
+          </view>
+        </view>
+        <!-- 等级 -->
+        <view wx:if="{{others.status === 1}}" class="grade">
+          <view class="decoration">
+            <checkbox data-type="is_decoration" checked="{{false}}" bindtap="changeCheckbox" />一对一精装店铺<text>（300元/店铺）</text>
+          </view>
+          <view class="star">
+            <checkbox data-type="is_rating" checked="{{false}}" bindtap="changeCheckbox" />星级评定<text>（20/次）</text>
+          </view>
+        </view>
+        <!-- 提示 -->
+        <view wx:if="{{others.status === 1}}" class="tip">选择一对一精装店铺请保持电话24小时之内开机，会有工作人员跟您联系</view>
+        <!-- 置顶 -->
+        <view wx:if="{{others.status === 1}}" class="top">      
+          <wxc-list title="是否置顶" arrow="{{false}}" mode="none">
+            <switch data-type="is_top" checked="{{false}}" bindtap="changeCheckbox" type="switch" color="#E92D24"></switch>
+          </wxc-list>        
+          <view wx:if="{{changedFields.is_top}}" class="level target">
+            <view class="title">置顶时间</view>
+            <!-- 置顶选择开始 -->
+            <picker mode="selector" bindchange="changeTop" value="{{changedFields.top_level}}" range="{{topList}}">
+              <view class="picker">
+                <view class="select">
+                  <text>{{topList[changedFields.top_level]}}</text>
+                </view>
+              </view>
+            </picker>
+            <!-- 置顶选择结束 -->
+          </view>
+        </view>
+        <!-- 费用 -->
+        <view wx:if="{{others.status === 1}}" class="level target">
+          <!-- <view class="title">选择地区</view> -->
+          <!-- 地区选择开始 -->
+          <picker bindchange="changeLevel" value="{{changedFields.level}}" range="{{partner}}">
+              <view class="picker">
+                <view class="rightIcon"><image mode="aspectFit" src="/static/images/address_right.png" /></view>
+                <view class="select">
+                  原价<text class="delete">{{levelList[changedFields.level].original_price}}</text>元
+                  现价<text class="red">{{levelList[changedFields.level].price}}</text>元
+                  （{{levelList[changedFields.level].desc}}）
+                  </view>
+              </view>
+          </picker>
+          <!-- 地区选择结束 -->
+        </view>
+        <!-- 优惠 -->
+        <view wx:if="{{userInfo.remainder > 0}}" class="coupon">
+          <text class="blod red">优惠</text>：您有免费发布机会<text class="red">{{userInfo.remainder}}</text>次，本次可抵扣<text class="red">{{10}}</text>元
+        </view>
+        <!-- 协议 -->
+        <view class="read">
+          <checkbox data-type="is_agreed" checked="{{false}}" bindtap="changeCheckbox" name="protocal" color="red" />
+          我已阅读并同意
+          <text class="red" bindtap="showAgreement">《合伙人须知》</text>
+          <view class="clear"></view>
+        </view>
+        <!-- 发布 -->
+        <view class="post">
+          <button></button>
+        </view>
+        <!-- 申请按钮 -->
+        <view class="apply_box">
+          <button bindtap="addData" class="apply_btn">确认发布</button>
+        </view>
+      </view>
+    </view>
+    <!-- 主体结束 -->
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import { request, storage2data } from '../../utils/util'
+  import api from '../../config/api'
+  import { qqmap } from '../../config/config'
+  import QQMapWX from '../../utils/qqmap-wx-jssdk.js'
+  import Vgetmobile from '../../components/getmobile'
+
+  export default class Edit extends wepy.page {
+    config = {
+      usingComponents: {
+        'wxc-button': '../../../packages/@minui/wxc-button/dist/index',
+        'wxc-input': '../../../packages/@minui/wxc-input/dist/index',
+        'wxc-list': '../../../packages/@minui/wxc-list/dist/index',
+        'wxc-cc': '../../../packages/@minui/wxc-cc/dist/index'
+      }
+    }
+    components = {
+      'v-getmobile': Vgetmobile
+    }
+
+    mixins = []
+
+    data = {
+      bannar: [
+        {
+          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/%E9%A1%B9%E7%9B%AE%E5%9B%9B/edit.jpg',
+          link: ''
+        }
+      ],
+      partner: [ '全国' ],
+      levelList: [
+        {
+          id: 1,
+          name: '原价18 现价10元（全国）',
+          original_price: 18,
+          price: 10,
+          desc: '全国'
+          // desc: '你的粉丝购买商品或者加入优选客联盟等，您可获得提成，躺着就能赚钱'
+        }
+      ],
+      topList: ['置顶一天（收费1.00元）', '置顶一周（收费5.00元）', '置顶一月（收费15.00元）'],
+      adcode: '',
+      address: '',
+      location: {},
+      position: "",
+      changedFields: {
+        is_decoration: false,
+        is_rating: false,
+        is_top: false,
+        is_agreed: false,
+        level: 0,
+        top_level: 1,
+        primary_img_url: "",
+        mobile: "",
+        post_images: []
+      },
+      userInfo: {},
+      others: {}
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {
+      'bindtap': (...args) => {
+        
+      }
+    }
+    
+    /* 经纬度对象转字符串
+     * @method location2position
+     * @param {Object}
+     * @return {String} 经度_纬度
+    */
+    location2position(location) {
+      return [ location.longitude, location.latitude ].join('_')
+    }
+    /* 获取当前位置经纬度和描述
+     * @method getLocal
+     * @param {}
+     * @return {String, Object} 所在位置的行政区划代码，所在位置的省市区名称
+    */
+    async getLocal() {
+      const qqmapsdk = new QQMapWX({
+        key: qqmap.key
+      })
+      qqmapsdk.reverseGeocoderP = obj => new Promise((resolve, reject) => {
+        qqmapsdk.reverseGeocoder({
+          success: function(res) {
+            resolve(res)
+          },
+          ...obj
+        })
+      })
+
+      const lres = await wx.getLocationP({
+        type: 'wgs84'
+      })
+
+      const location = {
+        latitude: lres.latitude,
+        longitude: lres.longitude
+      }
+      console.log('当前经纬度: ', location)
+
+      const addressRes = await qqmapsdk.reverseGeocoderP({
+        location: {
+          latitude: lres.latitude,
+          longitude: lres.longitude
+        }
+      })
+      console.log('当前位置描述', addressRes)
+
+      const {
+        result: {
+          ad_info: {
+            adcode
+          },
+          address,
+          address_component: currentRegion
+        }
+      } = addressRes
+
+      console.log('行政区划代码', adcode)
+
+      return { adcode, address, currentRegion, location }
+    }
+
+    /* 点击定位按钮 */
+    async bindLocate() {
+      const { adcode, address, location } = await this.getLocal()
+      
+      this.adcode = adcode
+      this.address = address
+      this.location = location
+      this.position = this.location2position(location)
+      this.changedFields.position = this.position
+      this.changedFields.position_description = this.address
+
+      this.$apply()
+    }
+
+    async chooseLocation() {
+      const res = await wx.chooseLocationP({
+        latitude: 38.9375,
+        longitude: 117.3571,
+        scale: 28
+      })
+      console.log('res', res)
+      const { address, longitude, latitude } = res
+      const location = { longitude, latitude }
+
+      this.location = location
+      this.address = address
+      this.position = this.location2position(location)
+      this.changedFields.position = this.position
+      this.changedFields.position_description = this.address
+
+      this.$apply()
+    }
+
+    async setMobile(number) {
+      this.changedFields.mobile = number
+      storage2data(this)
+      console.log(storage2data)
+      this.$apply()
+    }
+
+    /* 添加图片
+     * @method addImage
+     * @param {}
+     * @return {} 
+    */
+    async addImage(e) {
+      const { type } = e.currentTarget.dataset
+      const chooseRes = await wx.chooseImageP({ count: 9 })
+      const { tempFilePaths } = chooseRes
+      const uploadRes = await wx.uploadFileP({
+        url: api.PostImgAdd,
+        filePath: tempFilePaths[0],
+        name: 'post_img',
+        header: {
+          'X-Nideshop-Token': wx.getStorageSync('token')
+        }
+      })
+      const { data } = uploadRes
+      console.log('data, type', data, type)
+      const parseData = JSON.parse(data)
+      if (type === 'imgs') {
+        this.changedFields.post_images.push(parseData.data)
+      } else if (type === 'primary') {
+        this.changedFields.primary_img_url = parseData.data
+      }
+
+      this.$apply()
+    }
+    changeCheckbox(e) {
+      console.log('e', e)
+      const { type } = e.currentTarget.dataset
+      const currentFieldValue = this['changedFields'][type]
+      this['changedFields'][type] = !currentFieldValue
+    }
+    changeLevel(e) {
+      console.log('level', e)
+      this.changedFields.level = e.detail.value
+    }
+    changeTop(e) {
+      console.log('top_level', e)
+      this.changedFields.top_level = e.detail.value
+    }
+    close(e) {
+      console.log('e', e)
+      const { index } = e.currentTarget.dataset
+      this.changedFields.post_images.splice(index, 1)
+    }
+    onLoad() {
+      let _this = this
+      console.log('this.$wxapp', this.$wxapp)
+    }
+
+    async onShow() {
+      console.log('show')
+      storage2data(this)
+      this.changedFields.mobile = this.userInfo.mobile
+    }
+
+    async addData() {
+      const _this = this
+      const { changedFields, userInfo, others } = _this
+      const { is_decoration, is_rating, is_top, top_level } = changedFields
+      const { remainder: remainder_before } = userInfo
+      const { status } = others
+
+      let remainder_after = remainder_before;
+      // 计算价格
+      let post_price = 1000
+      if (is_decoration) {
+        post_price += 30000
+      }
+      if (is_rating) {
+        post_price += 2000
+      }
+      if (is_top) {
+        switch (top_level) {
+          case 0:
+            post_price += 100
+            break
+          case 1:
+            post_price += 500
+            break
+          case 2:
+            post_price += 1500
+            break
+        }
+      }
+      // 免费发布次数抵扣
+      if (remainder_before > 0) {
+        post_price -= 1000
+        remainder_after = remainder_before - 1
+      }
+      // 状态价格
+      if (status === 0) {
+        post_price = 0
+      }
+
+      post_price = parseFloat((post_price / 100).toFixed(2))
+      // post_price = 0.01
+      // 添加作者字段
+      changedFields.user_id = this.userInfo.id
+      // 添加手机字段
+      // changedFields.mobile = this.userInfo.mobile
+      // 添加总价字段
+      changedFields.post_price = post_price
+      if (post_price === 0) {
+        changedFields.status = 1
+      }
+      console.log('changedFields', changedFields)
+      const postResult = await request(api.PostAdd, changedFields, 'POST')
+      const { data: lastId } = postResult
+      console.log('lastId', lastId)
+
+      const addImageArr = []
+      changedFields.post_images.forEach(post_image => {
+        addImageArr.push({ post_id: lastId, img_url: post_image })
+      })
+      const addResult = await request(api.PostImgAddRecord, addImageArr, 'POST')
+      console.log('addResult', addResult)
+      if (post_price && post_price !== 0) {
+        this.pay(lastId, remainder_after)
+      } else {
+        let content = ''
+        if (remainder_before !== remainder_after) {
+          // 使用次数抵扣
+          const res = await request(api.UserRuduceRemainder, { post_id: lastId, remainder_after }, "POST")
+
+          const userInfo = wx.getStorageSync('userInfo')
+          userInfo.remainder = remainder_after
+          wx.setStorageSync('userInfo', userInfo)
+          storage2data(this)
+
+          if (res.errno === 0) {
+            content = '发布成功，正在审核中'
+          } else {
+            content = '发布成功'
+          }
+        }
+        content = '发布成功，正在审核中...'
+        wx.showModal({
+          title: '提示', 
+          content,
+          showCancel: false, 
+          success: function(res) {
+            if (res.confirm) {
+              wx.switchTab({
+                url: '/pages/post/post'
+              })
+            }
+          }
+        })
+      }
+    }
+
+    changeField(e) {
+      console.log('e', e)
+      const { type } = e.currentTarget.dataset
+      const { value } = e.detail
+      this['changedFields'][type] = value
+    }
+
+    pay(lastId, remainder_after) {
+      const _this = this
+      request(api.ApplyPay, { post_id: lastId, remainder_after }, "POST")
+      .then(function (res) {
+        console.log("申请分销商 res: ", res)
+        if(res.errno === 1){
+          wx.showToast({ title: "申请中.." })
+        }else{
+          console.log("payPrepayId res: ", res)
+          if (res.errno === 0) {
+            let payParam = res.data
+            wx.requestPayment({
+              'timeStamp': payParam.timeStamp,
+              'nonceStr': payParam.nonceStr,
+              'package': payParam.package,
+              'signType': payParam.signType,
+              'paySign': payParam.paySign,
+              'success': function (res) {
+                console.log("success to requestPayment and res is: ", res)
+                wx.showModal({ 
+                  title: '提示', 
+                  content: '支付成功，正在审核中', 
+                  showCancel: false, 
+                  success: function(res) {
+                    let userInfo = wx.getStorageSync('userInfo')
+                    userInfo.is_distributor = 1
+                    wx.setStorageSync('userInfo', userInfo)
+                    if (res.confirm) {
+                      wx.switchTab({
+                        url: '/pages/ucenter/index/index'
+                      })
+                    }
+                  }
+                })
+              },
+              'fail': function (res) {
+                console.log("fail to requestPayment and res is: ", res)
+              }
+            })
+          } else {
+            wx.showModal({ 
+              title: '提示', 
+              content: '支付错误', 
+              showCancel: false
+            })
+          }
+        }
+      })
+    }
+
+    changeMobile(e) {
+      this['changedFields']['mobile'] = e.detail.value
+    }
+
+    showAgreement(e) {
+      wx.showModal({
+        title: '《合伙人须知》',
+        // content: '优选客在使用优选客联盟提供的各项服务的同事，承诺接受并遵守各项规定、规则，优选客联盟有权根据需要不时的修改本协议和规则，新规则在优选客联盟平台发布，如有优选客违反新规则，涉及违法犯罪，涉及传销等欺诈手段，优选客联盟有权自动解除优选客，情节严重的可移交司法机关处理。\n佣金规则：1、下级购买商品为商品价格*0.02*分成比=佣金；2、推荐成为合伙人直接从下级加入费用提70%，二级加入费用提20%；该佣金规则持续到2018年10月1号0点，届时更改规则。'
+        content: '优选客在使用优选客联盟提供的各项服务的同事，承诺接受并遵守各项规定、规则，优选客联盟有权根据需要不时的修改本协议和规则，新规则在优选客联盟平台发布，如有优选客违反新规则，涉及违法犯罪，涉及传销等欺诈手段，优选客联盟有权自动解除优选客，情节严重的可移交司法机关处理。',
+        showCancel: false
+      })
+    }
+  }
+</script>

@@ -1,0 +1,98 @@
+page {
+  padding: 0 0 20rpx 0;
+  background-color: #eee;
+}
+.wrap {
+  background-color: #eee;
+}
+.wrap .clear {
+  clear: both;
+}
+.wrap image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wrap .body {
+  background-color: white;
+}
+.wrap .body .author {
+  padding: 30rpx 20rpx 30rpx 20rpx;
+  border-bottom: solid 1rpx #ddd;
+}
+.wrap .body .author .avatar {
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 200rpx;
+  overflow: hidden;
+}
+.wrap .body .author .right {
+  float: left;
+  padding: 0 0 0 33rpx;
+}
+.wrap .body .article {
+  padding: 0 20rpx;
+}
+.wrap .body .article .title {
+  padding: 20rpx 0 0 0;
+  font-size: 31rpx;
+}
+.wrap .body .article .body {
+  padding: 20rpx 0;
+}
+.wrap .body .article .imgs {
+  padding: 20rpx 0;
+  width: 100%;
+}
+.wrap .body > .bottom {
+  padding: 0 20rpx;
+}
+.wrap .body > .bottom > .browse {
+  position: relative;
+  font-size: 20rpx;
+}
+.wrap .body > .bottom > .browse > view {
+  display: block;
+  float: left;
+  font-size: 22rpx;
+}
+.wrap .body > .bottom > .browse image {
+  width: 35rpx;
+  float: left;
+}
+.wrap .body > .bottom > .browse > .num {
+  color: #4395FF;
+}
+.wrap .body > .bottom > .up {
+  position: relative;
+  font-size: 20rpx;
+}
+.wrap .body > .bottom > .up > view {
+  display: block;
+  float: left;
+  font-size: 22rpx;
+}
+.wrap .body > .bottom > .up image {
+  position: relative;
+  top: -4rpx;
+  width: 35rpx;
+  float: left;
+}
+.wrap .body > .bottom > .up > .num {
+  color: #4395FF;
+}
+.wrap .body > .message {
+  font-size: 38rpx;
+}
+.wrap .body > .message .contact_me {
+  color: orange;
+  padding: 15rpx 28rpx;
+  font-size: 25rpx;
+}
+.wrap .body > .message .input__form {
+  font-size: 25rpx;
+}
+.wrap .body > .message input {
+  font-size: 25rpx;
+}

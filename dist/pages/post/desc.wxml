@@ -1,0 +1,65 @@
+
+  <view class="wrap">
+    <!-- 头部开始 -->
+
+    <!-- 头部结束 -->
+    <!-- 主体开始 -->
+    <view class="body">
+      <!-- 作者信息开始 -->
+      <view class="author">
+        <view class="avatar">
+          <image src="{{user.avatar}}"/>
+        </view>
+        <view class="right">
+          <view class="title">{{user.nickname}}</view>
+          <view class="tags">
+            <wxc-label  wx:if="{{post.is_top}}" class="label" type="fill">置顶</wxc-label>
+          </view>
+        </view>
+        <view class="clear"/>
+      </view>
+      <!-- 作者信息结束 -->
+      <!-- 文章内容开始 -->
+      <view class="article">
+        <view class="title">
+          {{post.title}}
+        </view>
+        <view class="body">
+          {{post.description?post.description:''}}
+        </view>
+        <view class="imgs">
+          <block  wx:for="{{imgs}}">
+            <view class="img">
+              <image mode="widthFix" src="{{item.img_url}}"/>
+            </view>
+          </block>
+        </view>
+      </view>
+      <!-- 文章内容结束 -->
+      <!-- 文章浏览开始 -->
+      <view class="bottom">
+        <!-- 浏览 -->
+        <view class="browse">
+          <image mode="widthFix" src="/static/image/watch.png"/>
+          <view class="num">{{post.view}}</view>
+          <view class="">次浏览</view>
+        </view>
+        <!-- 点赞 -->
+        <view class="up" bindtap="up">
+          <image mode="widthFix" src="/static/image/up.png"/>
+          <view class="num">{{ups}}</view>
+          <view class="">人点赞</view>
+        </view>
+        <view class="clear"/>
+      </view>
+      <!-- 文章浏览结束 -->
+      <!-- 附加信息开始 -->
+      <view class="message">
+        <wxc-input disabled="{{true}}" type="add_time" title="添加时间" value="{{post.add_time}}"/>
+        <wxc-input disabled="{{true}}" type="contacts" title="联系电话" value="{{post.mobile}}"/>
+        <view class="contact_me">联系我时，请说是在优选客联盟上看到的信息哦~</view>
+      </view>
+      <!-- 附加信息结束 -->
+    </view>
+    <!-- 主体结束 -->
+  </view>

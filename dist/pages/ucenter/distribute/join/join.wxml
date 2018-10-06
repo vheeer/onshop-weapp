@@ -1,0 +1,8 @@
+<view class="wrap" bindtap="formSubmit">
+	<!-- 顶部图片开始 -->
+	<view class="topimg">
+		<view class="pay_mask"></view>
+		<image mode="widthFix" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/join.jpg" />
+	</view>
+	<!-- 顶部图片结束 -->
+</view>

@@ -1,0 +1,254 @@
+page {
+  background-color: #eee;
+}
+page image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+view,text {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+page .orange {
+  background-color: #fc9b32;
+}
+page .pink {
+  background-color: #fc8a82;
+}
+page .rose {
+  background-color: #ff5b69;
+}
+page .green {
+  background-color: #1fda96;
+}
+page .blue {
+  background-color: #3ec7fe;
+}
+page .clear {
+  clear: both;
+}
+page .head {
+  height: 235rpx;
+}
+page .head > image {
+  position: absolute;
+  height: 235rpx;
+}
+page .head .mes_box {
+  position: relative;
+  padding: 0 25rpx 25rpx 25rpx;
+}
+page .head .mes_box .avatar_box {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 200rpx;
+  overflow: hidden;
+  float: left;
+}
+page .head .mes_box .avatar_box > image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+page .head .mes_box .name_box {
+  position: relative;
+  float: left;
+  padding: 10rpx 0 10rpx 20rpx;
+  font-size: 28rpx;
+}
+page .head .mes_box .name_box .name {
+  color: white;
+  padding: 0 0 13rpx 0;
+  opacity: 0.9;
+}
+page .head .mes_box .name_box .join {
+  color: #ddd;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100rpx;
+  font-size: 18rpx;
+  width: 204rpx;
+  height: 36rpx;
+}
+page .head .mes_box .name_box .join > image,
+page .head .mes_box .name_box .join > view {
+  position: relative;
+  margin-top: 5rpx;
+  float: left;
+}
+page .head .mes_box .name_box .join > view {
+  padding: 0 0 0 10rpx;
+  opacity: 0.8;
+}
+page .head .mes_box .name_box .join > view button {
+  opacity: 0;
+}
+page .head .mes_box .name_box .join > image {
+  width: 30rpx;
+}
+page .head .mes_box .name_box .join > .right {
+  float: right;
+  padding: 0 13rpx 0 0;
+}
+page .main {
+  position: relative;
+  margin-top: -85rpx;
+  padding: 0 30rpx;
+  z-index: 100;
+}
+page .main .model {
+  border-radius: 20rpx;
+  background-color: white;
+  margin: 0 0 30rpx 0;
+}
+page .main > .m0 {
+  height: 130rpx;
+}
+page .main > .m0 .item {
+  position: relative;
+  float: left;
+  padding: 23rpx 0 0 0;
+  width: 33.33%;
+  text-align: center;
+}
+page .main > .m0 .item .number {
+  font-size: 29rpx;
+  color: red;
+}
+page .main > .m0 .item .text {
+  position: relative;
+  font-size: 24rpx;
+  padding: 9rpx 0 0 0;
+}
+page .main > .mn > .top {
+  position: relative;
+  padding: 10rpx;
+  border-bottom: solid 1px #ddd;
+}
+page .main > .mn > .top > image {
+  position: relative;
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+page .main > .mn > .top > view {
+  position: absolute;
+  line-height: 20rpx;
+  left: 85rpx;
+  top: 32rpx;
+  font-size: 30rpx;
+}
+page .main > .mn > .body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25rpx 0;
+}
+page .main > .mn > .body > .item {
+  position: relative;
+  text-align: center;
+  padding: 40rpx 0;
+  width: 173rpx;
+}
+page .main > .mn > .body > .item > .icon_box {
+  padding: 15rpx;
+  margin: 0 auto;
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 150rpx;
+  overflow: hidden;
+}
+page .main > .mn > .body > .item .text {
+  padding: 15rpx 0 0 0;
+  color: #666;
+  font-size: 25rpx;
+}
+page .main > .mn .fontrose {
+  color: #ff5b69 !important;
+}
+page .main > .m1 {
+  height: 800rpx;
+}
+page .bottom {
+  position: relative;
+  width: 100%;
+  height: 50rpx;
+}
+page .bottom .content {
+  position: absolute;
+  margin: 0 0 0 -76rpx;
+  left: 50%;
+}
+page .bottom .content .logo {
+  display: inline-block;
+  position: relative;
+  width: 33rpx;
+  top: 6rpx;
+  left: -10rpx;
+}
+page .bottom .content .text {
+  display: inline;
+  color: #666;
+  font-size: 25rpx;
+}
+.getPhoneNumber {
+  display: inline-block;
+  position: absolute;
+  padding-left: 0rpx;
+  padding-right: 0rpx;
+  min_width: 100rpx;
+  width: 100rpx;
+  height: 55rpx;
+  font-size: 17rpx;
+  border: 0;
+  box-shadow: 0;
+  opacity: 0;
+}
+.join .item {
+  position: relative;
+  padding: 20rpx 0rpx;
+}
+.join .right {
+  float: left;
+  width: 450rpx;
+  font-size:20rpx;
+}
+.join .right1 {
+  float: left;
+  width: 450rpx;
+  font-size:25rpx;
+  position:relative;
+  top:-13rpx; 
+}
+.visible {
+  opacity:1;
+  color:white;
+  font-size:10rpx;
+}
+.left {
+  float: left;
+  padding: 5rpx 0 0 30rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+}
+.bannar_join {
+  position: relative;
+  width: 100%;
+}
+.bannar_join .btn {
+  position: absolute;
+  right:4rpx;
+  bottom:4rpx;
+  width:144rpx;
+  height:51rpx;
+  font-size: 25rpx;
+  border-radius: 7rpx;
+  color: white;
+  text-align: center;
+  background-color: rgb(205, 38, 22);
+  line-height: 45rpx;
+}
+.bannar_join image {
+  
+}

@@ -1,0 +1,142 @@
+
+  <view>
+    <!-- 头部开始 -->
+    <view class="head">
+      <image src="https://test-1256171234.cos.ap-beijing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180831080842.jpg"/>
+      <view class="mes_box">
+        <view class="avatar_box">
+          <image src="{{avatar}}"/>
+        </view>
+        <view class="name_box">
+          <view class="name">
+            {{nickname}}
+          </view>
+          <view class="join">
+            <view class="item">
+              <input wx:if="{{userInfo.mobile}}" class="right1" name="mobile" value="{{userInfo.mobile}}" disabled="true" placeholder="请填写手机号码"></input>
+              <view wx:if="{{!userInfo.mobile}}" class="right getPhoneNumber visible">点击获取手机号码</view>
+              <button wx:if="{{!userInfo.mobile}}" open-type="getPhoneNumber" class="getPhoneNumber right" bindgetphonenumber="getPhoneNumber"></button>
+              <view class="clear"></view>
+            </view>
+          </view>
+        </view>
+        <view class="clear"/> 
+      </view>
+    </view>
+    <!-- 头部结束 -->
+    <!-- 主体开始 -->
+    <view class="main">
+      <!-- 第零块开始 -->
+      <view class="model m0">
+        <view class="item packet">
+          <view class="number">{{totalpost}}</view>
+          <view class="text">帖子</view>
+        </view>
+        <view class="item count">
+          <view class="number">{{revieing}}</view>
+          <view class="text">审核中</view>
+        </view>
+        <view class="item collect">
+          <view class="number">{{remainder}}</view>
+          <view class="text">剩余次数</view>
+        </view>
+<!--         <view class="item packet">
+          <view class="number">{{balance}}</view>
+          <view class="text">钱包</view>
+        </view>
+        <view class="item count">
+          <view wx:if="{{commision || commision === 0}}" class="number">{{commision}}</view>
+          <view class="text">佣金</view>
+        </view>
+        <view class="item collect">
+          <view class="number">{{my_team}}</view>
+          <view class="text">粉丝</view>
+        </view> -->
+        <view class="clear"/>
+      </view>
+      <!-- 第零块结束 -->
+      <!-- 第一块开始 -->
+      <view class="model mn m1">
+        <view class="top">
+          <view>我的服务</view>
+          <image mode="aspectFill" src="/static/images/star.png"/>
+        </view>
+        <view class="body">
+          <!-- 订单 -->
+          <view data-page="/pages/ucenter/order/order" bindtap="tapItem" class="item">
+            <view class="icon_box orange">
+              <image src="/static/images/board.png"/>
+            </view>
+            <view class="text">
+              我的订单
+            </view>
+          </view>
+          <!-- 浏览记录 -->
+          <view data-page="../footprint/footprint" bindtap="tapItem" class="item">
+            <view class="icon_box pink">
+              <image src="/static/images/histroy.png"/>
+            </view>
+            <view class="text">
+              浏览记录
+            </view>
+          </view>
+          <!-- 优选客联盟 -->
+          <!-- <view data-page="{{userInfo.is_distributor === 1?'/pages/ucenter/distribute/index/index':'/pages/ucenter/distribute/join/join'}}" bindtap="tapItem" class="item">
+            <view class="icon_box rose">
+              <image src="/static/images/join.png"/>
+            </view>
+            <view class="text">
+              优选客联盟
+            </view>
+          </view> -->
+          <!-- 加客服 -->
+          <view bindtap="addGroup" class="item">
+            <view class="icon_box green">
+              <image src="/static/images/add.png"/>
+            </view>
+            <view class="text fontrose">
+              加客服
+            </view>
+          </view>
+          <!-- 活动 -->
+          <view wx:if="{{others.status === 1}}" data-page="{{userInfo.is_distributor === 1?'/pages/ucenter/distribute/join/join':'/pages/ucenter/distribute/join/join'}}" bindtap="tapItem" class="item">
+            <view class="icon_box green">
+              <image src="/static/images/group.png"/>
+            </view>
+            <view class="text">
+              活动
+            </view>
+          </view>
+          <!-- 地址 -->
+          <view data-page="/pages/ucenter/address/address" bindtap="tapItem" class="item first">
+            <view class="icon_box blue">
+              <image src="/static/images/address.png"/>
+            </view>
+            <view class="text">
+              地址管理
+            </view>
+          </view>
+        </view>
+        <!-- 加入 -->
+        <view wx:if="{{others.status === 1}}" class="bannar_join" data-page="{{userInfo.is_distributor === 1?'/pages/ucenter/distribute/join/join':'/pages/ucenter/distribute/join/join'}}" bindtap="tapItem">
+          <view class="btn rose">点击前往 ></view>
+          <image mode="widthFix" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/add1.jpg" />
+        </view>
+      </view>
+      <!-- 第一块结束 -->
+      <!-- 第二块开始 -->
+      <!-- 第二块结束 -->
+      <!-- 第三块开始 -->
+      <!-- 第三块结束 -->
+      <!-- 第四块开始 -->
+      <!-- 第四块结束 -->
+    </view>
+    <!-- 主体结束 -->
+    <view class="bottom">
+      <view class="content">
+        <view class="logo"><image mode="widthFix" src="/static/images/ucenter.png"/></view>
+        <view class="text">优选客联盟</view>
+        <view class="clear"/>
+      </view>
+    </view>
+  </view>

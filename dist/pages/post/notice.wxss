@@ -1,0 +1,8 @@
+.wrap .clear {
+  clear: both;
+}
+.wrap image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

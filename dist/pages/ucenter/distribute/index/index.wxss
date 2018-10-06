@@ -1,0 +1,335 @@
+/* pages/ucenter/distribute/index/index.wxss */
+page {
+  background-color: #eee;
+}
+page .orange {
+  background-color: #fc9b32;
+}
+page .pink {
+  background-color: #fc8a82;
+}
+page .rose {
+  background-color: #ff5b69;
+}
+page .green {
+  background-color: #1fda96;
+}
+page .blue {
+  background-color: #3ec7fe;
+}
+page .clear {
+  clear: both;
+}
+.container{
+    background: #f4f4f4;
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+}
+.profile-info{
+    width: 100%;
+    padding: 0 30.25rpx 80rpx 30.25rpx;
+    background: #E92D24;
+    background-image: url('https://test-1256171234.cos.ap-beijing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180831080842.jpg');
+    color: white;
+}
+
+.profile-info .avatar{
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+}
+
+.profile-info .info{
+    flex: 1;
+    height: 85rpx;
+    padding-left: 31.25rpx;
+}
+
+.profile-info .name{
+    display: block;
+    height: 45rpx;
+    line-height: 45rpx;
+    color: #fff;
+    font-size: 37.5rpx;
+    margin-bottom: 10rpx;
+}
+
+.profile-info .level{
+    display: block;
+    height: 30rpx;
+    line-height: 30rpx;
+    margin-bottom: 10rpx;
+    color: #ccc;
+    font-size: 30rpx;
+}
+
+.user-menu{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+}
+
+.user-menu .item{
+    float: left;
+    width: 33.33333%;
+    height: 187.5rpx;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    text-align: center;
+}
+
+.user-menu .item .a{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-menu .item.no-border {
+    border-right: 0;
+}
+
+.user-menu .item.item-bottom {
+    border-bottom: none;
+}
+
+.user-menu .icon{
+    margin: 0 auto;
+    display: block;
+    height: 52.803rpx;
+    width: 52.803rpx;
+    margin-bottom: 16rpx;
+}
+
+.user-menu .icon.order{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -437.5rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.coupon{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -62.4997rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.gift{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.address{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 0 no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.security{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -500rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.kefu{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -312.5rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.help{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -250rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+.user-menu .icon.feedback{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -125rpx no-repeat;
+    background-size: 52.803rpx;
+}
+
+
+.user-menu .txt{
+    display: block;
+    height: 24rpx;
+    width: 100%;
+    font-size: 24rpx;
+}
+
+.logout{
+    margin-top: 50rpx;
+    height: 101rpx;
+    width: 100%;
+    line-height: 101rpx;
+    text-align: center;
+    background: #fff;
+    color: #333;
+    font-size: 30rpx;
+}
+.getUserInfo {
+-width:70px;
+border:none;
+top:-61px;
+position:relative;
+left:-13px;
+height:80px;
+
+  
+}
+
+.user-info {
+	padding:20px 0 10px 5px;
+border-bottom:solid 1px white;
+
+}
+.commision {
+	position: relative;
+	padding: 0 0 10px 0;
+}
+.user-info .info {
+position:absolute;
+left:83px;
+top:28px;
+
+}
+.commision view, .cash_paid view {
+	color: white;
+}
+.commision .title, .cash_paid .title {
+	font-size: 14px;
+	padding: 8px 0 5px 0;
+	}
+.commision .money, .cash_paid .money {
+	font-size: 14px;
+	padding: 8px 0 5px 0;
+	}
+.commision {
+
+}
+.cash_paid {
+
+}
+.getUserInfo {
+	border: solid 1px red;
+	top:-38px;
+	position:relative;
+	left:-13px;
+	height:69px;
+	width:222px;
+	line-height:95px;
+}
+.cash_btn {
+	position: absolute;
+	right: 8px;
+	top: 10px;
+	border: solid 1px white;
+	border-radius: 4px;
+	font-size: 17px;
+	padding: 4px 8px;
+}
+.cash_btn navigator {
+    font-size: 28rpx;
+}
+.real_name input {
+    display: inline-block;
+    margin: 0 0 0 55px;
+    height: 54px;
+}
+form button {
+    margin: 20px 8px;
+    background-color: red;
+    color: white;
+}
+.real_name view {
+    position: absolute;
+    line-height: 54px;
+    padding: 0 0 0 8px;
+
+}
+
+
+
+
+
+page image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+view,text {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+page .main {
+  position: relative;
+  margin-top: -85rpx;
+  padding: 0 30rpx;
+  z-index: 100;
+}
+page .main .model {
+  border-radius: 20rpx;
+  background-color: white;
+  margin: 0 0 30rpx 0;
+}
+page .main > .m0 {
+  height: 130rpx;
+}
+page .main > .m0 .item {
+  position: relative;
+  float: left;
+  padding: 23rpx 0 0 0;
+  width: 33.33%;
+  text-align: center;
+}
+page .main > .m0 .item .number {
+  font-size: 29rpx;
+  color: red;
+}
+page .main > .m0 .item .text {
+  position: relative;
+  font-size: 24rpx;
+  padding: 9rpx 0 0 0;
+}
+page .main > .mn > .top {
+  position: relative;
+  padding: 10rpx;
+  border-bottom: solid 1px #ddd;
+}
+page .main > .mn > .top > image {
+  position: relative;
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+page .main > .mn > .top > view {
+  position: absolute;
+  line-height: 20rpx;
+  left: 85rpx;
+  top: 32rpx;
+  font-size: 30rpx;
+}
+page .main > .mn > .body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25rpx 0;
+}
+page .main > .mn > .body > .item {
+  position: relative;
+  text-align: center;
+  padding: 40rpx 0;
+  width: 173rpx;
+}
+page .main > .mn > .body > .item > .icon_box {
+  padding: 15rpx;
+  margin: 0 auto;
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 150rpx;
+  overflow: hidden;
+}
+page .main > .mn > .body > .item .text {
+  padding: 15rpx 0 0 0;
+  color: #666;
+  font-size: 25rpx;
+}
+page .main > .m1 {
+  height: 800rpx;
+}

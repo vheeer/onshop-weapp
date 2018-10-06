@@ -168,9 +168,11 @@
     <!-- 头部结束 -->
     <!-- 主体开始 -->
     <view class="body">
-      <view class="title">
+      <!-- 头条图 -->
+      <view wx:if="{{others.status === 1}}" class="title">
         <image mode="widthFix" bindtap="goNotice" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/%E9%A1%B9%E7%9B%AE%E5%9B%9B/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%95%86%E5%B8%AE%E5%A4%B4%E6%9D%A1.jpg" />
       </view>
+      <!-- 信息 -->
       <view class="shops">
         <block wx:for="{{posts}}" wx:key="post" wx:for-item="post">
           <view class="shop">
@@ -246,7 +248,7 @@
 
 <script>
   import wepy from 'wepy'
-  import { request } from '../../utils/util'
+  import { request, storage2data } from '../../utils/util'
   import api from '../../config/api'
   export default class Index extends wepy.page {
     config = {
@@ -262,16 +264,14 @@
     data = {
       bannar: [
         {
-          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit.jpg',
-          link: ''
-        },
-        {
-          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit1.jpg',
+          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/youxuanke/upload/images/health.png',
           link: ''
         }
       ],
       posts: [],
-      page: 1
+      page: 1,
+      userInfo: {},
+      others: {}
     }
 
     computed = {}
@@ -290,6 +290,7 @@
     }
 
     async onShow() {
+      storage2data(this)
       this.page = 1
       const posts = await this.getData(this.page)
       this.posts = posts

@@ -1,0 +1,125 @@
+.wrap {
+  background-color: #f8f8f8;
+}
+.wrap .clear {
+  clear: both;
+}
+.wrap image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wrap .header .bannar {
+  height: 385rpx;
+}
+.wrap .header .bannar navigator {
+  display: block;
+  height: 100%;
+}
+.wrap .shops {
+  padding: 10rpx;
+}
+.wrap .shops .shop {
+  position: relative;
+  padding: 10rpx 10rpx 22rpx 10rpx;
+  margin: 0 0 25rpx 0;
+  background-color: white;
+}
+.wrap .shops .shop > .body {
+  padding: 0 0 20rpx 0;
+  font-size: 27rpx;
+}
+.wrap .shops .shop > .body .author .avatar {
+  float: left;
+  padding: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 200rpx;
+  overflow: hidden;
+}
+.wrap .shops .shop > .body .name {
+  padding: 0 0 5rpx 0;
+}
+.wrap .shops .shop .right {
+  float: left;
+  padding: 0 0 0 33rpx;
+}
+.wrap .shops .shop > .name {
+  padding: 10rpx 10rpx;
+}
+.wrap .shops .shop .star {
+  padding: 0 10rpx;
+}
+.wrap .shops .shop .desc {
+  padding: 0 10rpx;
+}
+.wrap .shops .shop > .bottom {
+  padding: 0 11rpx;
+  background-color: white;
+}
+.wrap .shops .shop > .bottom > .time {
+  color: #666;
+  font-size: 17rpx;
+}
+.wrap .shops .shop > .bottom > .address {
+  padding: 8rpx 0 0 0;
+  font-size: 26rpx;
+}
+.wrap .shops .shop > .bottom > .address image {
+  float: left;
+  width: 40rpx;
+  height: 30rpx;
+}
+.wrap .shops .shop > .bottom > .address text {
+  display: block;
+  color: #4395FF;
+  padding: 8rpx;
+}
+.wrap .shops .shop > .bottom > .others {
+  position: relative;
+  padding: 10rpx 0 0 10rpx;
+  background-color: #f8f8f8;
+}
+.wrap .shops .shop > .bottom > .others > .browse {
+  position: relative;
+  font-size: 20rpx;
+}
+.wrap .shops .shop > .bottom > .others > .browse > view {
+  display: block;
+  float: left;
+  font-size: 25rpx;
+}
+.wrap .shops .shop > .bottom > .others > .browse image {
+  width: 40rpx;
+  float: left;
+}
+.wrap .shops .shop > .bottom > .others > .browse > .num {
+  color: #4395FF;
+}
+.wrap .shops .shop > .bottom > .others > .up {
+  position: relative;
+  font-size: 20rpx;
+}
+.wrap .shops .shop > .bottom > .others > .up > view {
+  display: block;
+  font-size: 25rpx;
+  float: left;
+}
+.wrap .shops .shop > .bottom > .others > .up image {
+  position: relative;
+  top: -10rpx;
+  width: 45rpx;
+  float: left;
+}
+.wrap .shops .shop > .bottom > .others > .up > .num {
+  color: #4395FF;
+}
+.wrap .shops .shop > .bottom > .others > .in {
+  position: absolute;
+  right: 50rpx;
+  top: 10rpx;
+  font-size: 23rpx;
+}
+.wrap .shops .shop > .bottom > .others > .in navigator {
+  color: #4395FF;
+}

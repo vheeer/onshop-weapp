@@ -1,0 +1,8 @@
+'use strict';
+
+module.exports = {
+  qqmap: {
+    key: 'TCCBZ-XUICJ-A6PFE-KL5IQ-PV4E6-BXF6P'
+  }
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpZy5qcyJdLCJuYW1lcyI6WyJtb2R1bGUiLCJleHBvcnRzIiwicXFtYXAiLCJrZXkiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQU9DLE9BQVAsR0FBaUI7QUFDZkMsU0FBTztBQUNMQyxTQUFLO0FBREE7QUFEUSxDQUFqQiIsImZpbGUiOiJjb25maWcuanMiLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IHtcclxuICBxcW1hcDoge1xyXG4gICAga2V5OiAnVENDQlotWFVJQ0otQTZQRkUtS0w1SVEtUFY0RTYtQlhGNlAnXHJcbiAgfVxyXG59OyJdfQ==

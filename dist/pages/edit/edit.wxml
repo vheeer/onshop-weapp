@@ -1,0 +1,144 @@
+
+  <view class="wrap">
+    <!-- 头部开始 -->
+    <view class="header">
+      <!-- 轮播开始 -->
+      <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+        <swiper-item  wx:for="{{bannar}}" wx:item-key="{{item.id}}">
+          <navigator url="{{item.link}}">
+            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"/>
+          </navigator>
+        </swiper-item>
+      </swiper>
+      <!-- 轮播结束 -->
+    </view>
+    <!-- 头部结束 -->
+    <!-- 主体开始 -->
+    <view class="body">
+      <view class="form">
+        <!-- 主要信息 -->
+        <view class="message">
+          <wxc-input data-type="title" title="标题" placeholder="请输入"  bind:input="changeField" value=""/>
+          <!-- <wxc-input data-type="introduce" title="推荐理由" placeholder="请输入" bind:input="changeField" value=""></wxc-input> -->
+        </view>
+        <!-- 位置 -->
+        <view class="pos">
+          <!-- 定位按钮 -->
+          <view class="getLocationShop change btn">
+            <wxc-button type="primary" size="small" value="自动定位"  bind:click="bindLocate"/>
+          </view>
+          <view class="title">位置：</view>
+          <input type="text" disabled="true" bindtap="chooseLocation" value="{{address}}"/>
+          <view class="clear"/> 
+        </view>
+        <!-- 描述 -->
+        <view class="desc">
+          <view class="title">内容描述：</view>
+          <textarea type="text" data-type="description" placeholder="请输入内容描述" bindinput="changeField"/>
+        </view>
+        <!-- 主图 -->
+<!--         <view class="primary_picture">
+          <view class="title">首页图</view>
+          <image wx:if="{{!changedFields.primary_img_url || changedFields.primary_img_url === ''}}" mode="widthFix" data-type="primary" src="/static/image/add.png" bindtap="addImage" />
+          <image wx:if="{{changedFields.primary_img_url && changedFields.primary_img_url !== ''}}" class="primary_image" mode="widthFix" data-type="primary" src="{{changedFields.primary_img_url}}" bindtap="addImage" />
+        </view> -->
+        <!-- 图片 -->
+        <view class="picture">
+          <view class="title">内容图</view>
+          <view class="post_images">
+            <view class="post_image">
+              <image mode="widthFix" data-type="imgs" src="/static/image/add.png" bindtap="addImage"/>
+            </view>
+            <block  wx:for="{{changedFields.post_images}}" wx:for-index="index">
+              <view class="post_image">
+                <image data-index="{{index}}" mode="widthFix" class="close" src="/static/image/close.png" bindtap="close"/>
+                <image src="{{item}}"/>
+              </view>
+            </block>
+          </view>
+        </view>
+        <!-- 联系 -->
+        <view class="contact">
+          <wxc-input data-type="contacts" title="联系人" bind:input="changeField"/>
+          <view class="item" bindtap="getPhoneNumber">
+            <view class="left">手机号</view>
+            <input data-type="mobile" class="right" name="mobile" value="{{changedFields.mobile}}" bindinput="changeField" placeholder="请填写手机号码"/>
+            <view class="right getPhoneNumber visible">
+              
+  <button open-type="getPhoneNumber" bindgetphonenumber="$vGetmobile$getPhoneNumber" class="face" wx:if="{{1}}"/> 
+
+              <view>自动获取</view>
+              <!-- <text wx:else>{{userInfo.mobile}}</text> -->
+            </view>
+            <!-- <button wx:if="{{!userInfo.mobile}}" open-type="getPhoneNumber" class="getPhoneNumber right" bindgetphonenumber="getPhoneNumber"></button> -->
+            <view class="clear"/>
+          </view>
+        </view>
+        <!-- 等级 -->
+        <view wx:if="{{others.status === 1}}" class="grade">
+          <view class="decoration">
+            <checkbox data-type="is_decoration" checked="{{false}}" bindtap="changeCheckbox"/>一对一精装店铺<text>（300元/店铺）</text>
+          </view>
+          <view class="star">
+            <checkbox data-type="is_rating" checked="{{false}}" bindtap="changeCheckbox"/>星级评定<text>（20/次）</text>
+          </view>
+        </view>
+        <!-- 提示 -->
+        <view wx:if="{{others.status === 1}}" class="tip">选择一对一精装店铺请保持电话24小时之内开机，会有工作人员跟您联系</view>
+        <!-- 置顶 -->
+        <view wx:if="{{others.status === 1}}" class="top">      
+          <wxc-list title="是否置顶" arrow="{{false}}" mode="none">
+            <switch data-type="is_top" checked="{{false}}" bindtap="changeCheckbox" type="switch" color="#E92D24"/>
+          </wxc-list>        
+          <view wx:if="{{changedFields.is_top}}" class="level target">
+            <view class="title">置顶时间</view>
+            <!-- 置顶选择开始 -->
+            <picker mode="selector" bindchange="changeTop" value="{{changedFields.top_level}}" range="{{topList}}">
+              <view class="picker">
+                <view class="select">
+                  <text>{{topList[changedFields.top_level]}}</text>
+                </view>
+              </view>
+            </picker>
+            <!-- 置顶选择结束 -->
+          </view>
+        </view>
+        <!-- 费用 -->
+        <view wx:if="{{others.status === 1}}" class="level target">
+          <!-- <view class="title">选择地区</view> -->
+          <!-- 地区选择开始 -->
+          <picker bindchange="changeLevel" value="{{changedFields.level}}" range="{{partner}}">
+              <view class="picker">
+                <view class="rightIcon"><image mode="aspectFit" src="/static/images/address_right.png"/></view>
+                <view class="select">
+                  原价<text class="delete">{{levelList[changedFields.level].original_price}}</text>元
+                  现价<text class="red">{{levelList[changedFields.level].price}}</text>元
+                  （{{levelList[changedFields.level].desc}}）
+                  </view>
+              </view>
+          </picker>
+          <!-- 地区选择结束 -->
+        </view>
+        <!-- 优惠 -->
+        <view wx:if="{{userInfo.remainder > 0}}" class="coupon">
+          <text class="blod red">优惠</text>：您有免费发布机会<text class="red">{{userInfo.remainder}}</text>次，本次可抵扣<text class="red">{{10}}</text>元
+        </view>
+        <!-- 协议 -->
+        <view class="read">
+          <checkbox data-type="is_agreed" checked="{{false}}" bindtap="changeCheckbox" name="protocal" color="red"/>
+          我已阅读并同意
+          <text class="red" bindtap="showAgreement">《合伙人须知》</text>
+          <view class="clear"/>
+        </view>
+        <!-- 发布 -->
+        <view class="post">
+          <button/>
+        </view>
+        <!-- 申请按钮 -->
+        <view class="apply_box">
+          <button bindtap="addData" class="apply_btn">确认发布</button>
+        </view>
+      </view>
+    </view>
+    <!-- 主体结束 -->
+  </view>

@@ -1,0 +1,208 @@
+@import "./../../components/getmobile.wxss";
+.wrap {
+  background-color: #f8f8f8;
+}
+.wrap .clear {
+  clear: both;
+}
+.wrap .red {
+  color: #E92D24;
+}
+.wrap .delete {
+  text-decoration: line-through;
+}
+.wrap .blod {
+  font-weight: bold;
+}
+.wrap image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wrap .header .bannar navigator {
+  display: block;
+  height: 100%;
+}
+.wrap .body .form > .message {
+  background-color: white;
+}
+.wrap .body .form > .pos {
+  position: relative;
+  background-color: white;
+  padding: 23rpx 0 23rpx 28rpx;
+  font-size: 30rpx;
+}
+.wrap .body .form > .pos > .title {
+  float: left;
+  height: 51rpx;
+  line-height: 51rpx;
+}
+.wrap .body .form > .pos > input {
+  float: left;
+  padding: 0;
+  min-height: 0;
+}
+.wrap .body .form > .pos .change {
+  position: absolute;
+  right: 10rpx;
+}
+.wrap .body .form > .pos > image {
+  position: absolute;
+  width: 50rpx;
+  right: 20rpx;
+}
+.wrap .body .form > .desc {
+  margin: 2rpx 0 0 0;
+  background-color: white;
+  font-size: 30rpx;
+}
+.wrap .body .form > .desc .title {
+  padding: 23rpx 28rpx 0 28rpx;
+}
+.wrap .body .form > .desc textarea {
+  padding: 23rpx 28rpx 0 28rpx;
+  width: auto;
+  height: 300rpx;
+  font-size: 28rpx;
+}
+.wrap .body .form > .primary_picture {
+  margin: 20rpx 0 0 0;
+  background-color: white;
+  width: 100%;
+  padding: 30rpx;
+}
+.wrap .body .form > .primary_picture > image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.wrap .body .form > .primary_picture > image.primary_image {
+  width: 100%;
+  height: 100%;
+}
+.wrap .body .form > .picture {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20rpx 0 0 0;
+  background-color: white;
+  width: 100%;
+  height: 300rpx;
+  padding: 30rpx;
+}
+.wrap .body .form > .picture > image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.wrap .body .form > .picture > .post_images {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.wrap .body .form > .picture > .post_images > .post_image {
+  position: relative;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 5rpx;
+}
+.wrap .body .form > .picture > .post_images > .post_image .close {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  right: 0rpx;
+  top: 0rpx;
+}
+.wrap .body .form > .contact {
+  position: relative;
+  margin: 20rpx 0rpx;
+  background-color: white;
+  border-bottom: solid 1px #ddd;
+}
+.wrap .body .form > .contact .item {
+  padding: 25rpx 0 25rpx 0;
+}
+.wrap .body .form > .contact .item > .getPhoneNumber {
+  display: inline-block;
+  position: absolute;
+  right: 20rpx;
+  height: 50rpx;
+  background-color: #007bff;
+}
+.wrap .body .form > .contact .item > .getPhoneNumber view {
+  color: white;
+  font-size: 24rpx;
+  border-color: #007bff;
+  border: 1rpx solid transparent;
+  line-height: 51rpx;
+  padding: 0 20rpx;
+}
+.wrap .body .form > .contact .visible {
+  opacity: 1;
+  color: #777;
+}
+.wrap .body .form > .contact .left {
+  float: left;
+  padding: 5rpx 0 0 30rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+}
+.wrap .body .form > .contact .right {
+  float: left;
+  font-size: 30rpx;
+}
+.wrap .body .form > .grade {
+  font-size: 25rpx;
+  padding: 0 0 0 20rpx;
+}
+.wrap .body .form > .grade .decoration {
+  padding: 5rpx 0;
+  color: #666;
+}
+.wrap .body .form > .grade .decoration > text {
+  color: #E92D24;
+}
+.wrap .body .form > .grade .star {
+  padding: 5rpx 0;
+  color: #666;
+}
+.wrap .body .form > .grade .star > text {
+  color: #E92D24;
+}
+.wrap .body .form .coupon {
+  padding: 8rpx 0 0 22rpx;
+  font-size: 22rpx;
+  color: #ec4149;
+}
+.wrap .body .form .tip {
+  padding: 8rpx 0 0 22rpx;
+  font-size: 22rpx;
+}
+.wrap .body .form .target {
+  padding: 0rpx 0rpx;
+}
+.wrap .body .form .target .title {
+  padding: 12rpx 30rpx 12rpx 22rpx;
+  color: #888;
+  font-size: 30rpx;
+}
+.wrap .body .form .target .select {
+  padding: 20rpx 30rpx;
+  background-color: white;
+  color: black;
+  font-size: 28rpx;
+}
+.wrap .body .form .read {
+  padding: 18rpx 0 16rpx 20rpx;
+  font-size: 30rpx;
+}
+.wrap .body .form .read checkbox {
+  position: relative;
+  top: -3rpx;
+}
+.wrap .body .form .apply_box {
+  background-color: white;
+  padding: 20rpx;
+}
+.wrap .body .form .apply_btn {
+  background-color: #ec4149;
+  color: white;
+  font-size: 33rpx;
+}

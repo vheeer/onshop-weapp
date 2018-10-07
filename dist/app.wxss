@@ -1,0 +1,47 @@
+.container {
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+  font-family: PingFangSC-Light, helvetica, 'Heiti SC';
+}
+view,
+image,
+text,
+navigator {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+view,
+text {
+  font-family: PingFangSC-Light, helvetica, 'Heiti SC';
+  font-size: 29rpx;
+  color: #333;
+}
+.no_data_box {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -198px;
+}
+.no_data {
+  width: 100%;
+}
+.no_title {
+  text-align: center;
+  font-size: 16px;
+}
+.face {
+  display: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.01);
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  opacity: 0;
+}

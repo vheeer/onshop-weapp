@@ -232,7 +232,7 @@
 }
 </style>
 <template>
-  <view class='wrap'>
+  <view wx:if="{{others.status === 1}}" class='wrap'>
     <!-- 头部开始 -->
     <view class="header">
       <!-- 轮播开始 -->
@@ -372,6 +372,9 @@
       </view>
     </view>
     <!-- 主体结束 -->
+  </view>
+  <view wx:else class="wrap">
+    <image mode="widthFix" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/upload/images/d34bc274-943b-42b2-8384-5f0d11fdde50.jpg" />
   </view>
 </template>
 

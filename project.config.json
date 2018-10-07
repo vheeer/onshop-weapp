@@ -8,8 +8,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"appid": "wx06a933f5967a82a1",
-	"projectname": "onshop-weapp-river",
+	"appid": "wx2f6497b9bf01084c",
+	"projectname": "onshop-weapp-haofurun",
 	"miniprogramRoot": "./dist",
 	"condition": {
 		"search": {

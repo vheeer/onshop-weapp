@@ -80,13 +80,13 @@
               浏览记录
             </view>
           </view>
-          <!-- 优选客联盟 -->
+          <!-- 优选客平台 -->
           <!-- <view data-page="{{userInfo.is_distributor === 1?'/pages/ucenter/distribute/index/index':'/pages/ucenter/distribute/join/join'}}" bindtap="tapItem" class="item">
             <view class="icon_box rose">
               <image src="/static/images/join.png"/>
             </view>
             <view class="text">
-              优选客联盟
+              优选客平台
             </view>
           </view> -->
           <!-- 加客服 -->
@@ -135,7 +135,7 @@
     <view class="bottom">
       <view class="content">
         <view class="logo"><image mode="widthFix" src="/static/images/ucenter.png"/></view>
-        <view class="text">优选客联盟</view>
+        <view class="text">优选客平台</view>
         <view class="clear"/>
       </view>
     </view>

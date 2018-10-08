@@ -119,7 +119,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '优选客联盟',
+      title: '优选客平台',
       path: '/pages/index/index?referee=' + wx.getStorageSync('userInfo').id
     }
   },

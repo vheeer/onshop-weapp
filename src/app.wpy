@@ -131,7 +131,7 @@ export default class extends wepy.app {
     'window': {
       'backgroundTextStyle': 'dark',
       'navigationBarBackgroundColor': '#E92D24',
-      'navigationBarTitleText': '优选客联盟',
+      'navigationBarTitleText': '优选客平台',
       'navigationBarTextStyle': 'black',
       'enablePullDownRefresh': false
     },

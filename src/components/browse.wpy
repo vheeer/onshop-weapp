@@ -1,0 +1,97 @@
+<style lang="less">
+.browse {
+  position: relative;
+  font-size: 20rpx;
+  >view {
+    position: relative;
+    display: block;
+    float: left;
+    font-size: 25rpx;
+    top: -3rpx;
+  }
+  image {
+    width: 27rpx;
+    float: left;
+  }
+  >.num {
+    color: #4395FF;
+    top: 0rpx;
+  }
+}
+.up {
+  position: relative;
+  font-size: 20rpx;
+  >view {
+    position: relative;
+    display: block;
+    float: left;
+    font-size: 25rpx;
+    top: -3rpx;
+  }
+  image {
+    float: left;
+    margin: 0 0 0 13rpx;
+    width: 25rpx;
+  }
+  >.num {
+    color: #4395FF;
+    top: 0rpx;
+  }
+}
+</style>
+<template>
+  <!-- 浏览 -->
+  <view class="browse">
+    <image mode="widthFix" src="/static/images/watch.png" />
+    <view class="num">{{view}}</view>
+    <view class="">人浏览</view>
+  </view>
+  <!-- 点赞 -->
+  <view data-id="{{post.id}}" class="up" bindtap="up">
+    <image mode="widthFix" src="/static/images/up.png" />
+    <view class="num">{{up}}</view>
+    <view class="">人点赞</view>
+  </view>
+    
+
+</template>
+<script>
+  import wepy from 'wepy'
+  import { request, storage2data } from '../utils/util'
+  import api from '../config/api'
+  export default class Index extends wepy.page {
+    config = {
+      usingComponents: {
+        'wxc-rate': '../../packages/@minui/wxc-rate/dist/index',
+        'wxc-label': '../../packages/@minui/wxc-label/dist/index',
+      }
+    }
+    components = {}
+
+    mixins = []
+
+    data = {
+      up: 22,
+      view: 33
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {
+      'bindtap': (...args) => {
+
+      }
+    }
+
+    onLoad() {
+      let _this = this
+      console.log('_this', _this)
+    }
+
+    async onShow() {
+
+    }
+  }
+</script>

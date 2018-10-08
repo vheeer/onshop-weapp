@@ -1,0 +1,39 @@
+.browse {
+  position: relative;
+  font-size: 20rpx;
+}
+.browse > view {
+  position: relative;
+  display: block;
+  float: left;
+  font-size: 25rpx;
+  top: -3rpx;
+}
+.browse image {
+  width: 27rpx;
+  float: left;
+}
+.browse > .num {
+  color: #4395FF;
+  top: 0rpx;
+}
+.up {
+  position: relative;
+  font-size: 20rpx;
+}
+.up > view {
+  position: relative;
+  display: block;
+  float: left;
+  font-size: 25rpx;
+  top: -3rpx;
+}
+.up image {
+  float: left;
+  margin: 0 0 0 13rpx;
+  width: 25rpx;
+}
+.up > .num {
+  color: #4395FF;
+  top: 0rpx;
+}

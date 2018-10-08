@@ -137,7 +137,7 @@ page {
       </view>
       <!-- 作者信息结束 -->
       <!-- 文章内容开始 -->
-      <view class="article">
+      <view wx:if="{{post.is_decoration === 0}}" class="article">
         <view class="title">
           {{post.title}}
         </view>
@@ -153,6 +153,14 @@ page {
         </view>
       </view>
       <!-- 文章内容结束 -->
+      <!-- 精装店铺开始 -->
+      <view wx:else class="article">
+        <import src="../../lib/wxParse/wxParse.wxml" />
+          <view class="detail">
+            <template is="wxParse" data="{{wxParseData:detail.nodes}}" />
+          </view>
+      </view>
+      <!-- 精装店铺结束 -->
       <!-- 文章浏览开始 -->
       <view class="bottom">
         <!-- 浏览 -->
@@ -186,6 +194,8 @@ page {
   import wepy from 'wepy'
   import { request } from '../../utils/util'
   import api from '../../config/api'
+  import WxParse from '../../lib/wxParse/wxParse.js';
+
   export default class Index extends wepy.page {
     config = {
       usingComponents: {
@@ -234,6 +244,9 @@ page {
       let { data: post } = postData
       this.post = post
       this.post.add_time = new Date(this.post.add_time * 1000).format('MM月dd日 hh时mm分')
+      if (post.content) {
+        WxParse.wxParse('detail', 'html', post.content, this);
+      }
 
       const userData = await request(api.UserGet, { user_id: post.user_id }, 'GET')
       const { data: user } = userData

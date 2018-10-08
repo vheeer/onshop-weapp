@@ -20,7 +20,7 @@
       </view>
       <!-- 作者信息结束 -->
       <!-- 文章内容开始 -->
-      <view class="article">
+      <view  wx:if="{{post.is_decoration === 0}}" class="article">
         <view class="title">
           {{post.title}}
         </view>
@@ -28,7 +28,7 @@
           {{post.description?post.description:''}}
         </view>
         <view class="imgs">
-          <block  wx:for="{{imgs}}">
+          <block wx:for="{{imgs}}">
             <view class="img">
               <image mode="widthFix" src="{{item.img_url}}"/>
             </view>
@@ -36,6 +36,14 @@
         </view>
       </view>
       <!-- 文章内容结束 -->
+      <!-- 精装店铺开始 -->
+      <view wx:else class="article">
+        <import src="../../lib/wxParse/wxParse.wxml"/>
+          <view class="detail">
+            <template is="wxParse" data="{{wxParseData:detail.nodes}}"/>
+          </view>
+      </view>
+      <!-- 精装店铺结束 -->
       <!-- 文章浏览开始 -->
       <view class="bottom">
         <!-- 浏览 -->

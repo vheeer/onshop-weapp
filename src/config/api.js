@@ -1,7 +1,7 @@
 // const ApiRootUrl = 'http://127.0.0.1:8360/api/';
 const ApiRootUrl = 'https://www.yinmudianying.club/onshop-dev/api/';
-const mch = "star";
-const title = "";
+const mch = "shangxun";
+const title = "佳选客";
 const shop_type = 2;
 module.exports = {
   title,
@@ -99,5 +99,7 @@ module.exports = {
 
   PostImgAdd: ApiRootUrl + 'post_img/changeimg?mch=' + mch,
   PostImgAddRecord: ApiRootUrl + 'post_img/createmany?mch=' + mch,
-  PostImgGet: ApiRootUrl + 'post_img/match?mch=' + mch
+  PostImgGet: ApiRootUrl + 'post_img/match?mch=' + mch,
+
+  BannarGet: ApiRootUrl + 'bannar/index?mch=' + mch,
 };

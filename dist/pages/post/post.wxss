@@ -31,18 +31,56 @@
 }
 .wrap .shops .shop > .body .author .avatar {
   float: left;
-  padding: 10rpx;
   width: 100rpx;
   height: 100rpx;
-  border-radius: 200rpx;
+  border-radius: 7rpx;
   overflow: hidden;
+}
+.wrap .shops .shop > .body .author .right .title {
+  padding: 4rpx 0 0 0;
+  color: #6795b5;
+  font-size: 31rpx;
 }
 .wrap .shops .shop > .body .name {
   padding: 0 0 5rpx 0;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.wrap .shops .shop > .body .post_imgs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 10rpx 0 0 0;
+}
+.wrap .shops .shop > .body .post_imgs .post_imgs_box {
+  margin: 3rpx;
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 4rpx;
+  overflow: hidden;
 }
 .wrap .shops .shop .right {
   float: left;
-  padding: 0 0 0 33rpx;
+  padding: 0 0 0 23rpx;
+}
+.wrap .shops .shop .right .tags {
+  padding: 10rpx 0 0 0;
+}
+.wrap .shops .shop .right .tags .label {
+  height: 38rpx;
+  line-height: 38rpx;
+}
+.wrap .shops .shop .right .call_box {
+  padding: 5rpx;
+  width: 50rpx;
+  hight: 50rpx;
+  overflow: hidden;
 }
 .wrap .shops .shop > .name {
   padding: 10rpx 10rpx;
@@ -58,26 +96,30 @@
   background-color: white;
 }
 .wrap .shops .shop > .bottom > .time {
+  margin: 0 0 10rpx 0;
+}
+.wrap .shops .shop > .bottom > .time text {
   color: #666;
-  font-size: 17rpx;
+  font-size: 22rpx;
 }
 .wrap .shops .shop > .bottom > .address {
-  padding: 8rpx 0 0 0;
-  font-size: 26rpx;
+  position: absolute;
+  right: 5rpx;
 }
 .wrap .shops .shop > .bottom > .address image {
   float: left;
-  width: 40rpx;
-  height: 30rpx;
+  top: 11rpx;
+  margin: 3rpx 7px 0 0;
+  width: 25rpx;
 }
-.wrap .shops .shop > .bottom > .address text {
-  display: block;
-  color: #4395FF;
-  padding: 8rpx;
+.wrap .shops .shop > .bottom > .address > view {
+  float: left;
+  color: #0e6b82;
+  font-size: 23rpx;
 }
 .wrap .shops .shop > .bottom > .others {
   position: relative;
-  padding: 10rpx 0 0 10rpx;
+  padding: 10rpx 0 8rpx 10rpx;
   background-color: #f8f8f8;
 }
 .wrap .shops .shop > .bottom > .others > .browse {
@@ -85,34 +127,39 @@
   font-size: 20rpx;
 }
 .wrap .shops .shop > .bottom > .others > .browse > view {
+  position: relative;
   display: block;
   float: left;
   font-size: 25rpx;
+  top: -3rpx;
 }
 .wrap .shops .shop > .bottom > .others > .browse image {
-  width: 40rpx;
+  width: 27rpx;
   float: left;
 }
 .wrap .shops .shop > .bottom > .others > .browse > .num {
   color: #4395FF;
+  top: 0rpx;
 }
 .wrap .shops .shop > .bottom > .others > .up {
   position: relative;
   font-size: 20rpx;
 }
 .wrap .shops .shop > .bottom > .others > .up > view {
+  position: relative;
   display: block;
-  font-size: 25rpx;
   float: left;
+  font-size: 25rpx;
+  top: -3rpx;
 }
 .wrap .shops .shop > .bottom > .others > .up image {
-  position: relative;
-  top: -10rpx;
-  width: 45rpx;
   float: left;
+  margin: 0 0 0 13rpx;
+  width: 25rpx;
 }
 .wrap .shops .shop > .bottom > .others > .up > .num {
   color: #4395FF;
+  top: 0rpx;
 }
 .wrap .shops .shop > .bottom > .others > .in {
   position: absolute;

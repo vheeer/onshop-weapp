@@ -174,7 +174,7 @@ page {
       <view class="message">
         <wxc-input disabled="{{true}}" type="add_time" title="添加时间" value="{{post.add_time}}"></wxc-input>
         <wxc-input disabled="{{true}}" type="contacts" title="联系电话" value="{{post.mobile}}"></wxc-input>
-        <view class="contact_me">联系我时，请说是在优选客平台上看到的信息哦~</view>
+        <view class="contact_me">联系我时，请说是在{{title}}上看到的信息哦~</view>
       </view>
       <!-- 附加信息结束 -->
     </view>
@@ -186,6 +186,7 @@ page {
   import wepy from 'wepy'
   import { request } from '../../utils/util'
   import api from '../../config/api'
+  const { title } = api
   export default class Index extends wepy.page {
     config = {
       usingComponents: {
@@ -203,6 +204,7 @@ page {
       user: {},
       imgs: [],
       ups: 0,
+      title: ''
     }
 
     computed = {}
@@ -220,6 +222,9 @@ page {
 
     onShow() {
       this.getPost()
+      this.title = title
+
+      this.$apply()
     }
 
     async up() {

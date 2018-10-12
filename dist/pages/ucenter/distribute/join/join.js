@@ -10,8 +10,7 @@ Page({
         original_price: 300,
         price: 8,
         first_commision: 20,
-        second_commision: 10,
-        // desc: '你的粉丝购买商品或者加入优选客平台等，您可获得提成，躺着就能赚钱'
+        second_commision: 10
       },
       {
         id: 1,
@@ -19,8 +18,7 @@ Page({
         original_price: 1000,
         price: 18,
         first_commision: 40,
-        second_commision: 20,
-        // desc: '你的粉丝购买商品或者加入优选客平台等，您可获得提成，躺着就能赚钱'
+        second_commision: 20
       }
     ],
     partnerList: ['梦想合伙人', '天使合伙人'],
@@ -73,8 +71,7 @@ Page({
     this.setData({});
     wx.showModal({
       title: '《合伙人须知》',
-      // content: '优选客在使用优选客平台提供的各项服务的同事，承诺接受并遵守各项规定、规则，优选客平台有权根据需要不时的修改本协议和规则，新规则在优选客平台平台发布，如有优选客违反新规则，涉及违法犯罪，涉及传销等欺诈手段，优选客平台有权自动解除优选客，情节严重的可移交司法机关处理。\n佣金规则：1、下级购买商品为商品价格*0.02*分成比=佣金；2、推荐成为合伙人直接从下级加入费用提70%，二级加入费用提20%；该佣金规则持续到2018年10月1号0点，届时更改规则。'
-      content: '优选客在使用优选客平台提供的各项服务的同事，承诺接受并遵守各项规定、规则，优选客平台有权根据需要不时的修改本协议和规则，新规则在优选客平台平台发布，如有优选客违反新规则，涉及违法犯罪，涉及传销等欺诈手段，优选客平台有权自动解除优选客，情节严重的可移交司法机关处理。\n佣金规则：优选客购买商品为商品价格*0.02*分成比=佣金；'
+      content: ''
     })
   },
   changePartner: function(e) {
@@ -119,6 +116,7 @@ Page({
     })
   },
   formSubmit: function (e) {
+
     util.request(api.ApplyJoin, { distributor_level: 1 }, "POST")
     .then(function (res) {
       console.log("申请分销商 res: ", res);

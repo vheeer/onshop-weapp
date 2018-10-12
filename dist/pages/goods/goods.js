@@ -69,7 +69,7 @@ Page({
         if(is_free_delivery === 1){
           freightPrice = 0;
         }else{
-          const { freight } = wx.getStorageSync('others')[0];
+          const { freight } = wx.getStorageSync('others');
           if(typeof goods_freight === "number"){
             freightPrice = goods_freight;
           }else{

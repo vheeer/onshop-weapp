@@ -184,7 +184,7 @@
     <view class="l l-cart" bindtap="openCartPage" >
       <view class="box">
         <text class="cart-count">{{cartGoodsCount}}</text>
-        <image class="icon" src="/static/images/ic_menu_shoping_nor.png"></image>
+        <image class="icon" src="/static/images/cart_before.png"></image>
       </view>
     </view>
     <view class="c" bindtap='buyNow'>立即购买</view>

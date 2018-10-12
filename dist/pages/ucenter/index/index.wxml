@@ -30,15 +30,15 @@
       <view class="model m0">
         <view class="item packet">
           <view class="number">{{totalpost}}</view>
-          <view class="text">帖子</view>
+          <view class="text">{{others.status === 1?"帖子":"余额"}}</view>
         </view>
         <view class="item count">
           <view class="number">{{revieing}}</view>
-          <view class="text">审核中</view>
+          <view class="text">{{others.status === 1?"审核中":"购买次数"}}</view>
         </view>
         <view class="item collect">
           <view class="number">{{remainder}}</view>
-          <view class="text">剩余次数</view>
+          <view class="text">{{others.status === 1?"剩余次数":"获得优惠"}}</view>
         </view>
 <!--         <view class="item packet">
           <view class="number">{{balance}}</view>
@@ -80,13 +80,13 @@
               浏览记录
             </view>
           </view>
-          <!-- 优选客平台 -->
+          <!--  -->
           <!-- <view data-page="{{userInfo.is_distributor === 1?'/pages/ucenter/distribute/index/index':'/pages/ucenter/distribute/join/join'}}" bindtap="tapItem" class="item">
             <view class="icon_box rose">
               <image src="/static/images/join.png"/>
             </view>
             <view class="text">
-              优选客平台
+              
             </view>
           </view> -->
           <!-- 加客服 -->
@@ -135,7 +135,7 @@
     <view class="bottom">
       <view class="content">
         <view class="logo"><image mode="widthFix" src="/static/images/ucenter.png"/></view>
-        <view class="text">优选客平台</view>
+        <view class="text">{{title}}</view>
         <view class="clear"/>
       </view>
     </view>

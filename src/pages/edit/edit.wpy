@@ -19,6 +19,10 @@
     height: 100%;
   }
   .header {
+    .status0 {
+      padding: 10rpx;
+      color: #666;
+    }
     .bannar {
       navigator {
         display: block;
@@ -232,14 +236,18 @@
 }
 </style>
 <template>
-  <view class='wrap'>
+  <view wx:if="{{1}}" class='wrap'>
     <!-- 头部开始 -->
     <view class="header">
+      <view wx:if="{{others.status === 0}}" class="wrap">
+        <image mode="widthFix" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/shangxun/upload/images/e0108fc7-7048-4850-9a5b-62a5646941b5.jpg" />
+        <view class="status0">现在报名，待客服联系后就有机会获得会员资格，享受超低价格商品！</view>
+      </view>
       <!-- 轮播开始 -->
-      <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+      <swiper wx:if="{{others.status === 1}}" class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
         <swiper-item wx:for="{{bannar}}" wx:item-key="{{item.id}}">
           <navigator url="{{item.link}}">
-            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"></image>
+            <image mode="aspectFill" src="{{others.edit_img_url}}" background-size="cover"></image>
           </navigator>
         </swiper-item>
       </swiper>
@@ -250,12 +258,12 @@
     <view class="body">
       <view class="form">
         <!-- 主要信息 -->
-        <view class="message">
+        <view wx:if="{{others.status === 1}}" class="message">
           <wxc-input data-type="title" title="标题" placeholder="请输入" bind:input="changeField" value=""></wxc-input>
           <!-- <wxc-input data-type="introduce" title="推荐理由" placeholder="请输入" bind:input="changeField" value=""></wxc-input> -->
         </view>
         <!-- 位置 -->
-        <view class="pos">
+        <view wx:if="{{others.status === 1}}" class="pos">
           <!-- 定位按钮 -->
           <view class="getLocationShop change btn">
             <wxc-button type="primary" size="small" value="自动定位" bind:click="bindLocate" />
@@ -265,7 +273,7 @@
           <view class="clear"></view> 
         </view>
         <!-- 描述 -->
-        <view class="desc">
+        <view wx:if="{{others.status === 1}}" class="desc">
           <view class="title">内容描述：</view>
           <textarea type="text" data-type="description" placeholder="请输入内容描述" bindinput="changeField" />
         </view>
@@ -276,7 +284,7 @@
           <image wx:if="{{changedFields.primary_img_url && changedFields.primary_img_url !== ''}}" class="primary_image" mode="widthFix" data-type="primary" src="{{changedFields.primary_img_url}}" bindtap="addImage" />
         </view> -->
         <!-- 图片 -->
-        <view class="picture">
+        <view wx:if="{{others.status === 1}}" class="picture">
           <view class="title">内容图</view>
           <view class="post_images">
             <view class="post_image">
@@ -355,7 +363,7 @@
           <text class="blod red">优惠</text>：您有免费发布机会<text class="red">{{userInfo.remainder}}</text>次，本次可抵扣<text class="red">{{10}}</text>元
         </view>
         <!-- 协议 -->
-        <view class="read">
+        <view wx:if="{{others.status === 1}}" class="read">
           <checkbox data-type="is_agreed" checked="{{false}}" bindtap="changeCheckbox" name="protocal" color="red" />
           我已阅读并同意
           <text class="red" bindtap="showAgreement">《合伙人须知》</text>
@@ -367,7 +375,9 @@
         </view>
         <!-- 申请按钮 -->
         <view class="apply_box">
-          <button bindtap="addData" class="apply_btn">确认发布</button>
+          <button bindtap="addData" class="apply_btn">
+            {{others.status === 1?"确认发布":"提交联系方式"}}
+          </button>
         </view>
       </view>
     </view>
@@ -378,10 +388,13 @@
 <script>
   import wepy from 'wepy'
   import { request, storage2data } from '../../utils/util'
+  import { loginByWeixin } from '../../services/user'
   import api from '../../config/api'
   import { qqmap } from '../../config/config'
   import QQMapWX from '../../utils/qqmap-wx-jssdk.js'
   import Vgetmobile from '../../components/getmobile'
+
+  const { title } = api
 
   export default class Edit extends wepy.page {
     config = {
@@ -413,7 +426,7 @@
           original_price: 18,
           price: 10,
           desc: '全国'
-          // desc: '你的粉丝购买商品或者加入优选客平台等，您可获得提成，躺着就能赚钱'
+          // desc: `你的粉丝购买商品或者加入${title}等，您可获得提成，躺着就能赚钱`
         }
       ],
       topList: ['置顶一天（收费1.00元）', '置顶一周（收费5.00元）', '置顶一月（收费15.00元）'],
@@ -599,7 +612,9 @@
 
     async onShow() {
       console.log('show')
+      await loginByWeixin()
       storage2data(this)
+
       this.changedFields.mobile = this.userInfo.mobile
     }
 
@@ -609,6 +624,31 @@
       const { is_decoration, is_rating, is_top, top_level } = changedFields
       const { remainder: remainder_before } = userInfo
       const { status } = others
+      const alert = content => wx.showModal({
+        title: '提示', 
+        content,
+        showCancel: false
+      })
+
+      let content = ''
+      if (!changedFields.contacts || changedFields.contacts === '') {
+        alert('请输入联系人姓名')
+        return  
+      }
+
+      if (!changedFields.mobile || changedFields.mobile === '') {
+        alert('请输入或直接获取手机号码')
+        return  
+      }
+
+      if (status === 0) {
+        wx.showModal({
+          title: '提示', 
+          content: '感谢您的关注，我们会尽快与您取得联系',
+          showCancel: false
+        })
+        return
+      }
 
       let remainder_after = remainder_before;
       // 计算价格
@@ -763,8 +803,7 @@
     showAgreement(e) {
       wx.showModal({
         title: '《合伙人须知》',
-        // content: '优选客在使用优选客平台提供的各项服务的同事，承诺接受并遵守各项规定、规则，优选客平台有权根据需要不时的修改本协议和规则，新规则在优选客平台平台发布，如有优选客违反新规则，涉及违法犯罪，涉及传销等欺诈手段，优选客平台有权自动解除优选客，情节严重的可移交司法机关处理。\n佣金规则：1、下级购买商品为商品价格*0.02*分成比=佣金；2、推荐成为合伙人直接从下级加入费用提70%，二级加入费用提20%；该佣金规则持续到2018年10月1号0点，届时更改规则。'
-        content: '优选客在使用优选客平台提供的各项服务的同事，承诺接受并遵守各项规定、规则，优选客平台有权根据需要不时的修改本协议和规则，新规则在优选客平台平台发布，如有优选客违反新规则，涉及违法犯罪，涉及传销等欺诈手段，优选客平台有权自动解除优选客，情节严重的可移交司法机关处理。',
+        content: `用户在使用${title}提供的各项服务的同事，承诺接受并遵守各项规定、规则，${title}有权根据需要不时的修改本协议和规则，新规则在${title}发布，如有用户违反新规则，涉及违法犯罪，涉及传销等欺诈手段，${title}有权自动解除会员资格，情节严重的可移交司法机关处理。`,
         showCancel: false
       })
     }

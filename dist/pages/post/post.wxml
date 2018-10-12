@@ -6,7 +6,7 @@
       <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
         <swiper-item  wx:for="{{bannar}}" wx:key="{{item.id}}">
           <navigator url="{{item.link}}">
-            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"/>
+            <image mode="aspectFill" src="{{item.img_url}}" background-size="cover"/>
           </navigator>
         </swiper-item>
       </swiper>
@@ -15,11 +15,13 @@
     <!-- 头部结束 -->
     <!-- 主体开始 -->
     <view class="body">
-      <view class="title">
+      <!-- 头条图 -->
+      <view  wx:if="{{others.status === 1}}" class="title">
         <image mode="widthFix" bindtap="goNotice" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/%E9%A1%B9%E7%9B%AE%E5%9B%9B/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%95%86%E5%B8%AE%E5%A4%B4%E6%9D%A1.jpg"/>
       </view>
+      <!-- 信息 -->
       <view class="shops">
-        <block  wx:for="{{posts}}" wx:key="post" wx:for-item="post">
+        <block wx:for="{{posts}}" wx:key="post" wx:for-item="post">
           <view class="shop">
             <view class="header">
               
@@ -31,10 +33,18 @@
                 <view class="avatar">
                   <image src="{{post.user.avatar}}"/>
                 </view>
+                <!-- 昵称、标签 -->
                 <view class="right">
                   <view class="title">{{post.user.nickname}}</view>
                   <view class="tags">
-                    <wxc-label wx:if="{{post.is_top}}" class="label" type="fill">置顶</wxc-label>
+                    <wxc-label wx:if="{{post.is_top}}" class="label" type="fill" type-color="orange">置顶</wxc-label>
+                    <wxc-label wx:if="{{post.is_sale}}" class="label" type="fill" type-color="lightblue">转让</wxc-label>
+                  </view>
+                </view>
+                <!-- 电话 -->
+                <view class="right" bindtap="call" data-number="{{post.mobile}}">
+                  <view class="call_box">
+                    <image mode="widthFix" src="/static/images/call.png"/>
                   </view>
                 </view>
                 <view class="clear"/>
@@ -42,35 +52,43 @@
               <!-- 店名 -->
               <view class="name">{{post.title}}</view>
               <!-- 主图 -->
-              <view class="post_box">
-                <image mode="widthFix" src="{{post.primary_img_url}}"/>
+<!--               <view class="post_box">
+                <image mode="widthFix" src="{{post.primary_img_url}}"></image>
+              </view> -->
+              <!-- 多图 -->
+              <view class="post_imgs">
+                <block wx:for="{{post.post_img}}" wx:for-item="post_img">
+                  <view class="post_imgs_box">
+                    <image mode="aspectFill" src="{{post_img.img_url}}"/>
+                  </view>
+                </block>
               </view>
               <!-- 星级 -->
-              <view class="star">
+<!--               <view class="star">
                 好评指数：
-                <wxc-rate value="{{post.rating}}" readonly="{{true}}" count="5"/>
-              </view>
+                <wxc-rate value="{{post.rating}}" readonly="{{true}}" count="5"></wxc-rate>
+              </view> -->
               <!-- 描述 -->
               <!-- <view class="desc">推荐理由：<text>{{post.introduce}}</text></view> -->
             </view>
             <view class="bottom">
-              <view class="time">
-                <text>{{post.add_time}}</text>发布
-              </view>
               <view class="address">
-                <image mode="widthFix" src="/static/image/target.png"/>
-                <text>{{post.position_description}}</text>
+                <image mode="widthFix" src="/static/images/target.png"/>
+                <view>{{post.position_description}}</view>
+              </view>
+              <view class="time">
+                <text>{{post.add_time}}发布</text>
               </view>
               <view class="others">
                 <!-- 浏览 -->
                 <view class="browse">
-                  <image mode="widthFix" src="/static/image/watch.png"/>
+                  <image mode="widthFix" src="/static/images/watch.png"/>
                   <view class="num">{{post.view}}</view>
                   <view class="">人浏览</view>
                 </view>
                 <!-- 点赞 -->
                 <view data-id="{{post.id}}" class="up" bindtap="up">
-                  <image mode="widthFix" src="/static/image/up.png"/>
+                  <image mode="widthFix" src="/static/images/up.png"/>
                   <view class="num">{{post.up}}</view>
                   <view class="">人点赞</view>
                 </view>

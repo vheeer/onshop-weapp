@@ -8,8 +8,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"appid": "wxe1ed5c0057c1d140",
-	"projectname": "onshop-weapp-shangxun",
+	"appid": "wx4260022454b223e4",
+	"projectname": "onshop-weapp-shanghui",
 	"miniprogramRoot": "./dist",
 	"condition": {
 		"search": {

@@ -19,6 +19,10 @@
   width: 100%;
   height: 100%;
 }
+.wrap .header .status0 {
+  padding: 10rpx;
+  color: #666;
+}
 .wrap .header .bannar navigator {
   display: block;
   height: 100%;

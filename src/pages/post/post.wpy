@@ -29,7 +29,7 @@
       margin: 0 0 25rpx 0;
       background-color: white;
       >.header {
-        
+
       }
       >.body {
         padding: 0 0 20rpx 0;
@@ -37,30 +37,71 @@
         .author {
           .avatar {
             float: left;
-            padding: 10rpx;
             width: 100rpx;
             height: 100rpx;
-            border-radius: 200rpx;
+            border-radius: 7rpx;
+            overflow: hidden;
+            image {
+
+            }
+          }
+          .right {
+            .title {
+              padding: 4rpx 0 0 0;
+              color: #6795b5;
+              font-size: 31rpx;
+            }
+          }
+        }
+        .name {
+          padding: 0 0 5rpx 0;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+          white-space: normal !important;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+        .post_imgs {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          flex-wrap:wrap;
+          padding: 10rpx 0 0 0;
+          .post_imgs_box {
+            margin: 3rpx;
+            width: 170rpx;
+            height: 170rpx;
+            border-radius: 4rpx;
             overflow: hidden;
             image {
 
             }
           }
         }
-        .name {
-          padding: 0 0 5rpx 0;
-        }
       }
       .right {
         float: left;
-        padding: 0 0 0 33rpx;
+        padding: 0 0 0 23rpx;
         .title {
 
         }
         .tags {
+          padding: 10rpx 0 0 0;
+          .label {
+            height: 38rpx;
+            line-height: 38rpx;
+          }
           .tag {
 
           }
+        }
+        .call_box {
+          padding: 5rpx;
+          width: 50rpx;
+          hight: 50rpx;
+          overflow: hidden;
         }
       }
       >.post_box {
@@ -81,59 +122,68 @@
         padding: 0 11rpx;
         background-color: white;
         >.time {
-          color: #666;
-          font-size: 17rpx;
+          margin: 0 0 10rpx 0;
+          text {
+            color: #666;
+            font-size: 22rpx;
+          }
         }
         >.address {
-          padding: 8rpx 0 0 0;
-          font-size: 26rpx;
+          position: absolute;
+          right: 5rpx;
           image {
             float: left;
-            width: 40rpx;
-            height: 30rpx;
+            top: 11rpx;
+            margin: 3rpx 7px 0 0;
+            width: 25rpx;
           }
-          text {
-            display: block;
-            color: #4395FF;
-            padding: 8rpx;
+          >view {
+            float: left;
+            color: rgb(14, 107, 130);
+            font-size: 23rpx;
           }
         }
         >.others {
           position: relative;
-          padding: 10rpx 0 0 10rpx;
+          padding: 10rpx 0 8rpx 10rpx;
           background-color: #f8f8f8;
           >.browse {
+            position: relative;
+            font-size: 20rpx;
             >view {
+              position: relative;
               display: block;
               float: left;
               font-size: 25rpx;
+              top: -3rpx;
             }
-            position: relative;
-            font-size: 20rpx;
             image {
-              width: 40rpx;
+              width: 27rpx;
               float: left;
             }
             >.num {
               color: #4395FF;
+              top: 0rpx;
             }
           }
           >.up {
-            >view {
-              display: block;
-              font-size: 25rpx;
-              float: left;
-            }
             position: relative;
             font-size: 20rpx;
-            image {
+            >view {
               position: relative;
-              top: -10rpx;
-              width: 45rpx;
+              display: block;
               float: left;
+              font-size: 25rpx;
+              top: -3rpx;
+            }
+            image {
+              float: left;
+              margin: 0 0 0 13rpx;
+              width: 25rpx;
             }
             >.num {
               color: #4395FF;
+              top: 0rpx;
             }
           }
           >.in {
@@ -159,7 +209,7 @@
       <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
         <swiper-item wx:for="{{bannar}}" wx:key="{{item.id}}">
           <navigator url="{{item.link}}">
-            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"></image>
+            <image mode="aspectFill" src="{{item.img_url}}" background-size="cover"></image>
           </navigator>
         </swiper-item>
       </swiper>
@@ -168,9 +218,11 @@
     <!-- 头部结束 -->
     <!-- 主体开始 -->
     <view class="body">
-      <view class="title">
+      <!-- 头条图 -->
+      <view wx:if="{{others.status === 1}}" class="title">
         <image mode="widthFix" bindtap="goNotice" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/%E9%A1%B9%E7%9B%AE%E5%9B%9B/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%95%86%E5%B8%AE%E5%A4%B4%E6%9D%A1.jpg" />
       </view>
+      <!-- 信息 -->
       <view class="shops">
         <block wx:for="{{posts}}" wx:key="post" wx:for-item="post">
           <view class="shop">
@@ -184,10 +236,18 @@
                 <view class="avatar">
                   <image src="{{post.user.avatar}}" />
                 </view>
+                <!-- 昵称、标签 -->
                 <view class="right">
                   <view class="title">{{post.user.nickname}}</view>
                   <view class="tags">
-                    <wxc-label wx:if="{{post.is_top}}" class="label" type="fill">置顶</wxc-label>
+                    <wxc-label wx:if="{{post.is_top}}" class="label" type="fill" type-color="orange">置顶</wxc-label>
+                    <wxc-label wx:if="{{post.is_sale}}" class="label" type="fill" type-color="lightblue">转让</wxc-label>
+                  </view>
+                </view>
+                <!-- 电话 -->
+                <view class="right" bindtap="call" data-number="{{post.mobile}}">
+                  <view class="call_box">
+                    <image mode="widthFix" src="/static/images/call.png" />
                   </view>
                 </view>
                 <view class="clear"></view>
@@ -195,35 +255,43 @@
               <!-- 店名 -->
               <view class="name">{{post.title}}</view>
               <!-- 主图 -->
-              <view class="post_box">
+<!--               <view class="post_box">
                 <image mode="widthFix" src="{{post.primary_img_url}}"></image>
+              </view> -->
+              <!-- 多图 -->
+              <view class="post_imgs">
+                <block wx:for="{{post.post_img}}" wx:for-item="post_img">
+                  <view class="post_imgs_box">
+                    <image mode="aspectFill" src="{{post_img.img_url}}" />
+                  </view>
+                </block>
               </view>
               <!-- 星级 -->
-              <view class="star">
+<!--               <view class="star">
                 好评指数：
                 <wxc-rate value="{{post.rating}}" readonly="{{true}}" count="5"></wxc-rate>
-              </view>
+              </view> -->
               <!-- 描述 -->
               <!-- <view class="desc">推荐理由：<text>{{post.introduce}}</text></view> -->
             </view>
             <view class="bottom">
-              <view class="time">
-                <text>{{post.add_time}}</text>发布
-              </view>
               <view class="address">
-                <image mode="widthFix" src="/static/image/target.png" />
-                <text>{{post.position_description}}</text>
+                <image mode="widthFix" src="/static/images/target.png" />
+                <view>{{post.position_description}}</view>
+              </view>
+              <view class="time">
+                <text>{{post.add_time}}发布</text>
               </view>
               <view class="others">
                 <!-- 浏览 -->
                 <view class="browse">
-                  <image mode="widthFix" src="/static/image/watch.png" />
+                  <image mode="widthFix" src="/static/images/watch.png" />
                   <view class="num">{{post.view}}</view>
                   <view class="">人浏览</view>
                 </view>
                 <!-- 点赞 -->
                 <view data-id="{{post.id}}" class="up" bindtap="up">
-                  <image mode="widthFix" src="/static/image/up.png" />
+                  <image mode="widthFix" src="/static/images/up.png" />
                   <view class="num">{{post.up}}</view>
                   <view class="">人点赞</view>
                 </view>
@@ -246,7 +314,7 @@
 
 <script>
   import wepy from 'wepy'
-  import { request } from '../../utils/util'
+  import { request, storage2data } from '../../utils/util'
   import api from '../../config/api'
   export default class Index extends wepy.page {
     config = {
@@ -260,22 +328,11 @@
     mixins = []
 
     data = {
-      bannar: [
-        {
-          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit.jpg',
-          link: ''
-        },
-        {
-          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit1.jpg',
-          link: ''
-        },
-        {
-          image_url: 'https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/river/static/edit2.jpg',
-          link: ''
-        }
-      ],
       posts: [],
-      page: 1
+      page: 1,
+      bannar: [],
+      userInfo: {},
+      others: {}
     }
 
     computed = {}
@@ -288,12 +345,18 @@
       }
     }
 
-    onLoad() {
+    async onLoad() {
       let _this = this
       console.log('_this', _this)
+      const result = await request(api.BannarGet, {}, 'GET')
+      const { data } = result
+      this.bannar = data
+
+      this.$apply()
     }
 
     async onShow() {
+      storage2data(this)
       this.page = 1
       const posts = await this.getData(this.page)
       this.posts = posts
@@ -319,7 +382,7 @@
         if (add_time === 0) {
           item.add_time = ''
         } else {
-          item.add_time = new Date(add_time * 1000).format('YY年MM月dd日 hh时mm分')
+          item.add_time = new Date(add_time * 1000).format('YYYY-MM-dd日 hh:mm')
         }
         return item
       })
@@ -333,6 +396,13 @@
       const posts = await this.getData(this.page)
       this.posts = posts
       this.$apply()
+    }
+
+    async call(e) {
+      const { number } = e.currentTarget.dataset
+      const result = await wx.makePhoneCallP({
+        phoneNumber: number
+      })
     }
 
     goNotice() {

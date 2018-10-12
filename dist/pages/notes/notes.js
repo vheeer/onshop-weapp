@@ -10,7 +10,7 @@ Page({
     content: ""
   },
   onLoad: function (options) {
-    const { notes: content } = wx.getStorageSync('others')[0];
+    const { notes: content } = wx.getStorageSync('others');
     let go = { content };
     WxParse.wxParse('goodsDetail', 'html', go.content, this);
 

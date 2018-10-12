@@ -1,12 +1,16 @@
 
-  <view class="wrap">
+  <view  wx:if="{{1}}" class="wrap">
     <!-- 头部开始 -->
     <view class="header">
+      <view wx:if="{{others.status === 0}}" class="wrap">
+        <image mode="widthFix" src="https://nideshop-admin-dva-1256171234.cos.ap-beijing.myqcloud.com/shangxun/upload/images/e0108fc7-7048-4850-9a5b-62a5646941b5.jpg"/>
+        <view class="status0">现在报名，待客服联系后就有机会获得会员资格，享受超低价格商品！</view>
+      </view>
       <!-- 轮播开始 -->
-      <swiper class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-        <swiper-item  wx:for="{{bannar}}" wx:item-key="{{item.id}}">
+      <swiper wx:if="{{others.status === 1}}" class="bannar" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+        <swiper-item wx:for="{{bannar}}" wx:item-key="{{item.id}}">
           <navigator url="{{item.link}}">
-            <image mode="aspectFill" src="{{item.image_url}}" background-size="cover"/>
+            <image mode="aspectFill" src="{{others.edit_img_url}}" background-size="cover"/>
           </navigator>
         </swiper-item>
       </swiper>
@@ -17,12 +21,12 @@
     <view class="body">
       <view class="form">
         <!-- 主要信息 -->
-        <view class="message">
+        <view wx:if="{{others.status === 1}}" class="message">
           <wxc-input data-type="title" title="标题" placeholder="请输入"  bind:input="changeField" value=""/>
           <!-- <wxc-input data-type="introduce" title="推荐理由" placeholder="请输入" bind:input="changeField" value=""></wxc-input> -->
         </view>
         <!-- 位置 -->
-        <view class="pos">
+        <view wx:if="{{others.status === 1}}" class="pos">
           <!-- 定位按钮 -->
           <view class="getLocationShop change btn">
             <wxc-button type="primary" size="small" value="自动定位"  bind:click="bindLocate"/>
@@ -32,7 +36,7 @@
           <view class="clear"/> 
         </view>
         <!-- 描述 -->
-        <view class="desc">
+        <view wx:if="{{others.status === 1}}" class="desc">
           <view class="title">内容描述：</view>
           <textarea type="text" data-type="description" placeholder="请输入内容描述" bindinput="changeField"/>
         </view>
@@ -43,13 +47,13 @@
           <image wx:if="{{changedFields.primary_img_url && changedFields.primary_img_url !== ''}}" class="primary_image" mode="widthFix" data-type="primary" src="{{changedFields.primary_img_url}}" bindtap="addImage" />
         </view> -->
         <!-- 图片 -->
-        <view class="picture">
+        <view wx:if="{{others.status === 1}}" class="picture">
           <view class="title">内容图</view>
           <view class="post_images">
             <view class="post_image">
               <image mode="widthFix" data-type="imgs" src="/static/image/add.png" bindtap="addImage"/>
             </view>
-            <block  wx:for="{{changedFields.post_images}}" wx:for-index="index">
+            <block wx:for="{{changedFields.post_images}}" wx:for-index="index">
               <view class="post_image">
                 <image data-index="{{index}}" mode="widthFix" class="close" src="/static/image/close.png" bindtap="close"/>
                 <image src="{{item}}"/>
@@ -124,7 +128,7 @@
           <text class="blod red">优惠</text>：您有免费发布机会<text class="red">{{userInfo.remainder}}</text>次，本次可抵扣<text class="red">{{10}}</text>元
         </view>
         <!-- 协议 -->
-        <view class="read">
+        <view wx:if="{{others.status === 1}}" class="read">
           <checkbox data-type="is_agreed" checked="{{false}}" bindtap="changeCheckbox" name="protocal" color="red"/>
           我已阅读并同意
           <text class="red" bindtap="showAgreement">《合伙人须知》</text>
@@ -136,7 +140,9 @@
         </view>
         <!-- 申请按钮 -->
         <view class="apply_box">
-          <button bindtap="addData" class="apply_btn">确认发布</button>
+          <button bindtap="addData" class="apply_btn">
+            {{others.status === 1?"确认发布":"提交联系方式"}}
+          </button>
         </view>
       </view>
     </view>

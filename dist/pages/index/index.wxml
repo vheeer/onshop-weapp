@@ -6,7 +6,7 @@
     <view class="float avatar_box">
       <image mode="widthFix" src="{{userInfo.avatar}}" />
     </view>
-    <view class="float icontent">亲爱的{{userInfo.nickname}}，欢迎来到优选客商城</view>
+    <view class="float icontent">亲爱的{{userInfo.nickname}}，欢迎来到商城</view>
     <view class="float close" bindtap="close">
       <image mode="widthFix" src="/static/images/close.png" />
     </view>

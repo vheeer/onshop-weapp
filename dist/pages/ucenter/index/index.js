@@ -3,6 +3,8 @@ var api = require('../../../config/api.js');
 var user = require('../../../services/user.js');
 var app = getApp();
 
+const { title } = api
+
 Page({
   data: {
     userInfo: {}
@@ -19,7 +21,8 @@ Page({
     this.setData({
       ...wx.getStorageSync('userInfo'),
       userInfo: wx.getStorageSync('userInfo'),
-      others: wx.getStorageSync('others')
+      others: wx.getStorageSync('others'),
+      title
     })
     this.getDistributeDetail()
     .then(function (res) {
@@ -124,7 +127,7 @@ Page({
     if(this.data.userInfo.is_distributor !== 1){
       return wx.showModal({
         title: '提示',
-        content: '成为优选客后可以加群',
+        content: '成为会员后可以加群',
         showCancel: false
       })
     }

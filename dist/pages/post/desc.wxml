@@ -57,7 +57,7 @@
       <view class="message">
         <wxc-input disabled="{{true}}" type="add_time" title="添加时间" value="{{post.add_time}}"/>
         <wxc-input disabled="{{true}}" type="contacts" title="联系电话" value="{{post.mobile}}"/>
-        <view class="contact_me">联系我时，请说是在优选客平台上看到的信息哦~</view>
+        <view class="contact_me">联系我时，请说是在{{title}}上看到的信息哦~</view>
       </view>
       <!-- 附加信息结束 -->
     </view>

@@ -51,33 +51,34 @@ view,text{
 <script>
 import wepy from 'wepy';
 import 'wepy-async-function';
-const util = require('./utils/util.js');
-const api = require('./config/api.js');
-const user = require('./services/user.js');
+import api from './config/api.js'
+import util from './utils/util.js'
+import user from './services/user.js'
 
+const { title } = api
 
-    Date.prototype.format = function(format) {
-      var date = {
-        'M+': this.getMonth() + 1,
-        'd+': this.getDate(),
-        'h+': this.getHours(),
-        'm+': this.getMinutes(),
-        's+': this.getSeconds(),
-        'q+': Math.floor((this.getMonth() + 3) / 3),
-        'S+': this.getMilliseconds()
-      };
-      if (/(y+)/i.test(format)) {
-        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
-      }
-      for (var k in date) {
-        if (new RegExp('(' + k + ')').test(format)) {
-          format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? date[k] : ('00' + date[k]).substr(('' + date[k]).length));
-        }
-      }
-      return format;
-    };
+Date.prototype.format = function(format) {
+  var date = {
+    'M+': this.getMonth() + 1,
+    'd+': this.getDate(),
+    'h+': this.getHours(),
+    'm+': this.getMinutes(),
+    's+': this.getSeconds(),
+    'q+': Math.floor((this.getMonth() + 3) / 3),
+    'S+': this.getMilliseconds()
+  };
+  if (/(y+)/i.test(format)) {
+    format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+  for (var k in date) {
+    if (new RegExp('(' + k + ')').test(format)) {
+      format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? date[k] : ('00' + date[k]).substr(('' + date[k]).length));
+    }
+  }
+  return format;
+};
 
-export default class extends wepy.app {
+class app extends wepy.app {
   config = {
     'pages': [
       'pages/auth/login/login',
@@ -131,7 +132,7 @@ export default class extends wepy.app {
     'window': {
       'backgroundTextStyle': 'dark',
       'navigationBarBackgroundColor': '#E92D24',
-      'navigationBarTitleText': '优选客平台',
+      'navigationBarTitleText': '佳选客',
       'navigationBarTextStyle': 'black',
       'enablePullDownRefresh': false
     },
@@ -183,6 +184,7 @@ export default class extends wepy.app {
       'getLocation',
       'chooseLocation',
       'openLocation',
+      'makePhoneCall'
     ],
     'networkTimeout': {
       'request': 10000,
@@ -193,6 +195,7 @@ export default class extends wepy.app {
   constructor() {
     super();
     this.use('requestfix');
+    console.log('xxxxxxxx', title)
   }
   async onLaunch(options) {
     console.log('App onLaunch options', options);
@@ -259,5 +262,5 @@ export default class extends wepy.app {
     console.log(data);
   }
 }
-
+export default app;
 </script>
